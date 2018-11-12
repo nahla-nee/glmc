@@ -61,15 +61,6 @@ typedef union mat2{
 	};
 } mat2;
 
-//its nicer to have the w be the first member of a quaternion, i could just typedef a vec4 to be a quaternion
-//but am i gonna?
-typedef union quaternion{
-	__m128 quat;
-	struct{
-		float w, x, y, z;
-	};
-} quaternion;
-
 //vec2 function
 static inline float vec2_len(__m128 a){
 	vec2 tmp = GLMC_CAST(vec2, _mm_mul_ps(a, a));
@@ -486,38 +477,6 @@ static inline mat2 mat2_swapRow(mat2 a){
 }
 static inline mat2 mat2_swapCol(mat2 a){
 	return GLMC_CAST(mat2, _mm_shuffle_ps(a.mat, a.mat, 0x4e));
-}
-
-/*
-w = (aw*bw - ax*bx - ay*by - az*bz)
-x = (aw*bx + ax*bw + ay*bz - az*by)
-y = (aw*by - ax*bz + ay*bw + az*bx)
-z = (aw*bz + ax*by - ay*bx + az*bw)
-*/
-static inline __m128 quat_mul(__m128 a, __m128 b){
-	quaternion res;
-	/*need a rhs quaternion because we must change the order of numbers in b
-	the reason we dont just pass b as a quaternion is the same reason we use __m128
-	in ever other place, it's faster this way*/
-	quaternion rhs = (quaternion) b;
-
-	//w member of result
-	quaternion tmp = (quaternion) _mm_mul_ps(a, rhs.quat);
-	res.w = tmp.w - tmp.x - tmp.y - tmp.z;
-
-	//x member of result
-	tmp.quat = _mm_mul_ps(a, _mm_set_ps(rhs.y, rhs.z, rhs.w, rhs.x));
-	res.x = tmp.w + tmp.x + tmp.y - tmp.z;
-
-	//y member of result
-	tmp.quat = _mm_mul_ps(a, _mm_set_ps(rhs.x, rhs.w, rhs.z, rhs.y));
-	res.y = tmp.w - tmp.x + tmp.y + tmp.z;
-
-	//z member of result
-	tmp.quat = _mm_mul_ps(a, _mm_set_ps(rhs.w, rhs.x, rhs.y, rhs.z));
-	res.z = tmp.w + tmp.x - tmp.y + tmp.z;
-
-	return res.quat;
 }
 
 #ifdef __cplusplus
