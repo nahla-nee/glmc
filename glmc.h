@@ -36,7 +36,7 @@ typedef union vec4{
 	};
 	struct{
 		float r, g, b, a;
-	}
+	};
 } vec4;
 
 typedef union mat4{
