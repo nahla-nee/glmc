@@ -24,6 +24,9 @@ typedef union vec3{
 	struct{
 		float x, y, z;
 	};
+	struct{
+		float r, g, b;
+	};
 } vec3;
 
 typedef union vec4{
@@ -31,6 +34,9 @@ typedef union vec4{
 	struct{
 		float x, y, z, w;
 	};
+	struct{
+		float r, g, b, a;
+	}
 } vec4;
 
 typedef union mat4{

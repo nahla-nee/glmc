@@ -22,6 +22,9 @@ typedef union vec3_plain{
 	struct{
 		float x, y, z;
 	};
+	struct{
+		float r, g, b;
+	}
 } vec3_plain;
 
 typedef union vec4_plain{
@@ -29,6 +32,9 @@ typedef union vec4_plain{
 	struct{
 		float x, y, z, w;
 	};
+	struct{
+		float r, g, b, a;
+	}
 } vec4_plain;
 
 typedef union mat4_plain{
