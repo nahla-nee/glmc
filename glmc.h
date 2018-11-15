@@ -8,8 +8,14 @@
 extern "C"{
 #endif
 
+#include <stdbool.h>
 #include <math.h>
+#include <float.h>
 #include <smmintrin.h>
+
+#define VEC2_EPSILON FLT_EPSILON*2
+#define VEC3_EPSILON FLT_EPSILON*3
+#define VEC4_EPSILON FLT_EPSILON*4
 
 
 typedef union vec2{
@@ -68,6 +74,22 @@ typedef union mat2{
 } mat2;
 
 //vec2 function
+static inline bool vec2_equal(__m128 a, __m128 b){
+	vec2 tmp = GLMC_CAST(_mm_sub_ps(a, b));
+	tmp.vec = _mm_and_ps(tmp.vec, _mm_castsi128_ps(_mm_set1_epi32(0x7fffffff)));
+	if(VEC2_EPSILON > tmp.x+tmp.y){
+		return false;
+	}
+	return true;
+}
+static inline bool vec2_equal_eps(__m128 a, __m128 b, float epsilon){
+	vec2 tmp = GLMC_CAST(_mm_sub_ps(a, b));
+	tmp.vec = _mm_and_ps(tmp.vec, _mm_castsi128_ps(_mm_set1_epi32(0x7fffffff)));
+	if(epsilon > tmp.x+tmp.y){
+		return false;
+	}
+	return true;
+}
 static inline float vec2_len(__m128 a){
 	vec2 tmp = GLMC_CAST(vec2, _mm_mul_ps(a, a));
 	return sqrtf(tmp.x+tmp.y);
@@ -90,6 +112,22 @@ static inline __m128 vec2_mulMat(__m128 a, mat2 b){
 }
 
 //vec3 functions
+static inline bool vec3_equal(__m128 a, __m128 b){
+	vec3 tmp = GLMC_CAST(_mm_sub_ps(a, b));
+	tmp.vec = _mm_and_ps(tmp.vec, _mm_castsi128_ps(_mm_set1_epi32(0x7fffffff)));
+	if(VEC3_EPSILON > tmp.x+tmp.y){
+		return false;
+	}
+	return true;
+}
+static inline bool vec3_equal_eps(__m128 a, __m128 b, float epsilon){
+	vec3 tmp = GLMC_CAST(_mm_sub_ps(a, b));
+	tmp.vec = _mm_and_ps(tmp.vec, _mm_castsi128_ps(_mm_set1_epi32(0x7fffffff)));
+	if(epsilon > tmp.x+tmp.y){
+		return false;
+	}
+	return true;
+}
 static inline float vec3_len(__m128 a){
 	vec3 tmp = GLMC_CAST(vec3, _mm_mul_ps(a, a));
 	return sqrtf(tmp.x+tmp.y+tmp.z);
@@ -114,6 +152,22 @@ static inline __m128 vec3_mulMat(__m128 a, mat3 b){
 }
 
 //vec4 functions
+static inline bool vec4_equal(__m128 a, __m128 b){
+	vec4 tmp = GLMC_CAST(_mm_sub_ps(a, b));
+	tmp.vec = _mm_and_ps(tmp.vec, _mm_castsi128_ps(_mm_set1_epi32(0x7fffffff)));
+	if(VEC4_EPSILON > tmp.x+tmp.y){
+		return false;
+	}
+	return true;
+}
+static inline bool vec4_equal_eps(__m128 a, __m128 b, float epsilon){
+	vec4 tmp = GLMC_CAST(_mm_sub_ps(a, b));
+	tmp.vec = _mm_and_ps(tmp.vec, _mm_castsi128_ps(_mm_set1_epi32(0x7fffffff)));
+	if(epsilon > tmp.x+tmp.y){
+		return false;
+	}
+	return true;
+}
 static inline float vec4_len(__m128 a){
 	vec4 tmp = GLMC_CAST(vec4, _mm_mul_ps(a, a));
 	return sqrtf(tmp.x+tmp.y+tmp.z+tmp.w);

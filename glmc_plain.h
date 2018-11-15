@@ -67,6 +67,24 @@ typedef union mat2{
 	};
 } mat2;
 
+static inline float vec2_equal(vec2 a, vec2 b){
+	a.x = fabs(a.x-b.x);
+	a.y = fabs(a.y-b.y);
+	a.x += a.y;
+	if(a.x > VEC2_EPSILON){
+		return false;
+	}
+	return true;
+}
+static inline float vec2_equal_eps(vec2 a, vec2 b, float epsilon){
+	a.x = fabs(a.x-b.x);
+	a.y = fabs(a.y-b.y);
+	a.x += a.y;
+	if(a.x > epsilon){
+		return false;
+	}
+	return true;
+}
 static inline float vec2_len(vec2 a){
 	return sqrtf(a.x*a.x+a.y*a.y);
 }
@@ -158,6 +176,26 @@ static inline vec2 vec2_mulMat(vec2 a, mat2 b){
 }
 
 //vec3 functions
+static inline float vec3_equal(vec3 a, vec3 b){
+	a.x = fabs(a.x-b.x);
+	a.y = fabs(a.y-b.y);
+	a.z = fabs(a.z-b.z);
+	a.x += a.y + a.z;
+	if(a.x > VEC3_EPSILON){
+		return false;
+	}
+	return true;
+}
+static inline float vec3_equal_eps(vec3 a, vec3 b, float epsilon){
+	a.x = fabs(a.x-b.x);
+	a.y = fabs(a.y-b.y);
+	a.z = fabs(a.z-b.z);
+	a.x += a.y + a.z;
+	if(a.x > epsilon){
+		return false;
+	}
+	return true;
+}
 static inline float vec3_len(vec3 a){
 	return sqrtf(a.x*a.x+a.y*a.y+a.z*a.z);
 }
@@ -262,6 +300,28 @@ static inline vec3 vec3_mulMat(vec3 a, mat3 b){
 }
 
 //vec4 functions
+static inline float vec4_equal(vec4 a, vec4 b){
+	a.x = fabs(a.x-b.x);
+	a.y = fabs(a.y-b.y);
+	a.z = fabs(a.z-b.z);
+	a.w = fabs(a.w-b.w);
+	a.x += a.y + a.z + a.w;
+	if(a.x > VEC4_EPSILON){
+		return false;
+	}
+	return true;
+}
+static inline float vec4_equal_eps(vec4 a, vec4 b, float epsilon){
+	a.x = fabs(a.x-b.x);
+	a.y = fabs(a.y-b.y);
+	a.z = fabs(a.z-b.z);
+	a.w = fabs(a.w-b.w);
+	a.x += a.y + a.z + a.w;
+	if(a.x > epsilon){
+		return false;
+	}
+	return true;
+}
 static inline float vec4_len(vec4 a){
 	return sqrtf(a.x*a.x+a.y*a.y+a.z*a.z+a.w*a.w);
 }
