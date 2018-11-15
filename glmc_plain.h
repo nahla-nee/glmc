@@ -12,10 +12,6 @@ extern "C"{
 #include <float.h>
 #include <bool.h>
 
-#define VEC2_EPSILON FLT_EPSILON*2
-#define VEC3_EPSILON FLT_EPSILON*3
-#define VEC4_EPSILON FLT_EPSILON*4
-
 typedef union vec2{
 	float vec[2];
 	struct{
@@ -70,8 +66,7 @@ typedef union mat2{
 static inline float vec2_equal(vec2 a, vec2 b){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
-	a.x += a.y;
-	if(a.x > VEC2_EPSILON){
+	if(a.x > FLT_EPSILON || a.y > FLT_EPSILON){
 		return false;
 	}
 	return true;
@@ -79,8 +74,7 @@ static inline float vec2_equal(vec2 a, vec2 b){
 static inline float vec2_equal_eps(vec2 a, vec2 b, float epsilon){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
-	a.x += a.y;
-	if(a.x > epsilon){
+	if(a.x > epsilon || a.y > epsilon){
 		return false;
 	}
 	return true;
@@ -180,8 +174,7 @@ static inline float vec3_equal(vec3 a, vec3 b){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
-	a.x += a.y + a.z;
-	if(a.x > VEC3_EPSILON){
+	if(a.x > FLT_EPSILON || a.y > FLT_EPSILON || a.z > FLT_EPSILON){
 		return false;
 	}
 	return true;
@@ -190,8 +183,7 @@ static inline float vec3_equal_eps(vec3 a, vec3 b, float epsilon){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
-	a.x += a.y + a.z;
-	if(a.x > epsilon){
+	if(a.x > epsilon || a.y > epsilon || a.z > epsilon){
 		return false;
 	}
 	return true;
@@ -305,8 +297,7 @@ static inline float vec4_equal(vec4 a, vec4 b){
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
 	a.w = fabs(a.w-b.w);
-	a.x += a.y + a.z + a.w;
-	if(a.x > VEC4_EPSILON){
+	if(a.x > FLT_EPSILON || a.y > FLT_EPSILON || a.z > FLT_EPSILON || a.w > FLT_EPSILON){
 		return false;
 	}
 	return true;
@@ -316,8 +307,7 @@ static inline float vec4_equal_eps(vec4 a, vec4 b, float epsilon){
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
 	a.w = fabs(a.w-b.w);
-	a.x += a.y + a.z + a.w;
-	if(a.x > epsilon){
+	if(a.x > epsilon || a.y > epsilon || a.z > epsilon || a.w > epsilon){
 		return false;
 	}
 	return true;
