@@ -1,5 +1,5 @@
-#ifndef __GLMC_H__
-#define __GLMC_H__
+#ifndef GLMC_H
+#define GLMC_H
 
 #ifndef __cplusplus
 #define GLMC_CAST(TYPE, DATA) (TYPE) DATA
@@ -550,4 +550,4 @@ static inline mat2 mat2_swapCol(mat2 a){
 }
 #endif
 
-#endif /*__GLMC_H__*/
+#endif /*GLMC_H*/

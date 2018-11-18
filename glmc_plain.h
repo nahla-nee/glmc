@@ -1,5 +1,5 @@
-#ifndef __GLMC_PLAIN_H__
-#define __GLMC_PLAIN_H__
+#ifndef GLMC_PLAIN_H
+#define GLMC_PLAIN_H
 
 //non SSE version of glmc!
 //you really shouldn't use this, literally every CPU supports SSE
@@ -876,4 +876,4 @@ static inline mat2 mat2_swapCol(mat2 a){
 }
 #endif
 
-#endif /*__GLMC_PLAIN_H__*/
+#endif /*GLMC_PLAIN_H*/
