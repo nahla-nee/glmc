@@ -63,7 +63,7 @@ typedef union mat2{
 	};
 } mat2;
 
-static inline float vec2_equal(vec2 a, vec2 b){
+inline float vec2_equal(vec2 a, vec2 b){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	if(a.x > FLT_EPSILON || a.y > FLT_EPSILON){
@@ -71,7 +71,7 @@ static inline float vec2_equal(vec2 a, vec2 b){
 	}
 	return true;
 }
-static inline float vec2_equal_eps(vec2 a, vec2 b, float epsilon){
+inline float vec2_equal_eps(vec2 a, vec2 b, float epsilon){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	if(a.x > epsilon || a.y > epsilon){
@@ -79,87 +79,87 @@ static inline float vec2_equal_eps(vec2 a, vec2 b, float epsilon){
 	}
 	return true;
 }
-static inline float vec2_len(vec2 a){
+inline float vec2_len(vec2 a){
 	return sqrtf(a.x*a.x+a.y*a.y);
 }
-static inline vec2 vec2_norm(vec2 a){
+inline vec2 vec2_norm(vec2 a){
 	float len = sqrtf(a.x*a.x+a.y*a.y);
 	a.x /= len;
 	a.y /= len;
 	return a;
 }
-static inline vec2 vec2_set(float x, float y){
+inline vec2 vec2_set(float x, float y){
 	vec2 res = {x, y, 0.0f, 0.0f};
 	return res;
 }
-static inline vec2 vec2_set1(float x){
+inline vec2 vec2_set1(float x){
 	vec2 res = {x, x, 0.0f, 0.0f};
 	return res;
 }
-static inline vec2 vec2_add(vec2 a, vec2 b){
+inline vec2 vec2_add(vec2 a, vec2 b){
 	a.x += b.x;
 	a.y += b.y;
 	return a;
 }
-static inline vec2 vec2_sub(vec2 a, vec2 b){
+inline vec2 vec2_sub(vec2 a, vec2 b){
 	a.x -= b.x;
 	a.y -= b.y;
 	return a;
 }
-static inline vec2 vec2_mul(vec2 a, vec2 b){
+inline vec2 vec2_mul(vec2 a, vec2 b){
 	a.x *= b.x;
 	a.y *= b.y;
 	return a;
 }
-static inline vec2 vec2_div(vec2 a, vec2 b){
+inline vec2 vec2_div(vec2 a, vec2 b){
 	a.x /= b.x;
 	a.y /= b.y;
 	return a;
 }
-static inline vec2 vec2_addScal(vec2 a, float scalar){
+inline vec2 vec2_addScal(vec2 a, float scalar){
 	a.x += scalar;
 	a.y += scalar;
 	return a;
 }
-static inline vec2 vec2_subScal(vec2 a, float scalar){
+inline vec2 vec2_subScal(vec2 a, float scalar){
 	a.x -= scalar;
 	a.y -= scalar;
 	return a;
 }
-static inline vec2 vec2_mulScal(vec2 a, float scalar){
+inline vec2 vec2_mulScal(vec2 a, float scalar){
 	a.x *= scalar;
 	a.y *= scalar;
 	return a;
 }
-static inline vec2 vec2_divScal(vec2 a, float scalar){
+inline vec2 vec2_divScal(vec2 a, float scalar){
 	a.x /= scalar;
 	a.y /= scalar;
 	return a;
 }
-static inline float vec2_dot(vec2 a, vec2 b){
+inline float vec2_dot(vec2 a, vec2 b){
 	return a.x*b.x+a.y*b.y;
 }
-static inline vec2 vec2_abs(vec2 a){
+inline vec2 vec2_abs(vec2 a){
 	a.x = fabs(a.x);
 	a.y = fabs(a.y);
 	return a;
 }
-static inline vec2 vec2_ceil(vec2 a){
+inline vec2 vec2_ceil(vec2 a){
 	a.x = ceilf(a.x);
 	a.y = ceilf(a.y);
 	return a;
 }
-static inline vec2 vec2_floor(vec2 a){
+inline vec2 vec2_floor(vec2 a){
 	a.x = floorf(a.x);
 	a.y = floorf(a.y);
 	return a;
 }
-static inline vec2 vec2_round(vec2 a){
+inline vec2 vec2_round(vec2 a){
 	a.x = roundf(a.x);
 	a.y = roundf(a.y);
 	return a;
 }
-static inline vec2 vec2_mulMat(vec2 a, mat2 b){
+inline vec2 vec2_mulMat(vec2 a, mat2 b){
 	vec2 res;
 
 	res.vec[0] = a.x*b.m11+a.y*b.m21+a.z*b.m31;
@@ -170,7 +170,7 @@ static inline vec2 vec2_mulMat(vec2 a, mat2 b){
 }
 
 //vec3 functions
-static inline float vec3_equal(vec3 a, vec3 b){
+inline float vec3_equal(vec3 a, vec3 b){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
@@ -179,7 +179,7 @@ static inline float vec3_equal(vec3 a, vec3 b){
 	}
 	return true;
 }
-static inline float vec3_equal_eps(vec3 a, vec3 b, float epsilon){
+inline float vec3_equal_eps(vec3 a, vec3 b, float epsilon){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
@@ -188,100 +188,100 @@ static inline float vec3_equal_eps(vec3 a, vec3 b, float epsilon){
 	}
 	return true;
 }
-static inline float vec3_len(vec3 a){
+inline float vec3_len(vec3 a){
 	return sqrtf(a.x*a.x+a.y*a.y+a.z*a.z);
 }
-static inline vec3 vec3_norm(vec3 a){
+inline vec3 vec3_norm(vec3 a){
 	float len = sqrtf(a.x*a.x+a.y*a.y+a.z*a.z);
 	a.x /= len;
 	a.y /= len;
 	a.z /= len;
 	return a;
 }
-static inline vec3 vec3_set(float x, float y, float z){
+inline vec3 vec3_set(float x, float y, float z){
 	vec3 res = {x, y, z, 0.0f};
 	return res;
 }
-static inline vec3 vec3_set1(float x){
+inline vec3 vec3_set1(float x){
 	vec3 res = {x, x, x, 0.0f};
 	return res;
 }
-static inline vec3 vec3_add(vec3 a, vec3 b){
+inline vec3 vec3_add(vec3 a, vec3 b){
 	a.x += b.x;
 	a.y += b.y;
 	a.z += b.z;
 	return a;
 }
-static inline vec3 vec3_sub(vec3 a, vec3 b){
+inline vec3 vec3_sub(vec3 a, vec3 b){
 	a.x -= b.x;
 	a.y -= b.y;
 	a.z -= b.z;
 	return a;
 }
-static inline vec3 vec3_mul(vec3 a, vec3 b){
+inline vec3 vec3_mul(vec3 a, vec3 b){
 	a.x *= b.x;
 	a.y *= b.y;
 	a.z *= b.z;
 	return a;
 }
-static inline vec3 vec3_div(vec3 a, vec3 b){
+inline vec3 vec3_div(vec3 a, vec3 b){
 	a.x /= b.x;
 	a.y /= b.y;
 	a.z /= b.z;
 	return a;
 }
-static inline vec3 vec3_addScal(vec3 a, float scalar){
+inline vec3 vec3_addScal(vec3 a, float scalar){
 	a.x += scalar;
 	a.y += scalar;
 	a.z += scalar;
 	return a;
 }
-static inline vec3 vec3_subScal(vec3 a, float scalar){
+inline vec3 vec3_subScal(vec3 a, float scalar){
 	a.x -= scalar;
 	a.y -= scalar;
 	a.z -= scalar;
 	return a;
 }
-static inline vec3 vec3_mulScal(vec3 a, float scalar){
+inline vec3 vec3_mulScal(vec3 a, float scalar){
 	a.x *= scalar;
 	a.y *= scalar;
 	a.z *= scalar;
 	return a;
 }
-static inline vec3 vec3_divScal(vec3 a, float scalar){
+inline vec3 vec3_divScal(vec3 a, float scalar){
 	a.x /= scalar;
 	a.y /= scalar;
 	a.z /= scalar;
 	return a;
 }
-static inline float vec3_dot(vec3 a, vec3 b){
+inline float vec3_dot(vec3 a, vec3 b){
 	return (a.x*b.x+a.y*b.y+a.z*b.z);
 }
-static inline vec3 vec3_abs(vec3 a){
+inline vec3 vec3_abs(vec3 a){
 	a.x = fabs(a.x);
 	a.y = fabs(a.y);
 	a.z = fabs(a.z);
 	return a;
 }
-static inline vec3 vec3_ceil(vec3 a){
+inline vec3 vec3_ceil(vec3 a){
 	a.x = ceilf(a.x);
 	a.y = ceilf(a.y);
 	a.z = ceilf(a.z);
 	return a;
 }
-static inline vec3 vec3_floor(vec3 a){
+inline vec3 vec3_floor(vec3 a){
 	a.x = floorf(a.x);
 	a.y = floorf(a.y);
 	a.z = floorf(a.z);
 	return a;
 }
-static inline vec3 vec3_round(vec3 a){
+inline vec3 vec3_round(vec3 a){
 	a.x = roundf(a.x);
 	a.y = roundf(a.y);
 	a.z = roundf(a.z);
 	return a;
 }
-static inline vec3 vec3_mulMat(vec3 a, mat3 b){
+inline vec3 vec3_mulMat(vec3 a, mat3 b){
 	vec3 res;
 
 	res.vec[0] = a.x*b.m11+a.y*b.m21+a.z*b.m31;
@@ -292,7 +292,7 @@ static inline vec3 vec3_mulMat(vec3 a, mat3 b){
 }
 
 //vec4 functions
-static inline float vec4_equal(vec4 a, vec4 b){
+inline float vec4_equal(vec4 a, vec4 b){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
@@ -302,7 +302,7 @@ static inline float vec4_equal(vec4 a, vec4 b){
 	}
 	return true;
 }
-static inline float vec4_equal_eps(vec4 a, vec4 b, float epsilon){
+inline float vec4_equal_eps(vec4 a, vec4 b, float epsilon){
 	a.x = fabs(a.x-b.x);
 	a.y = fabs(a.y-b.y);
 	a.z = fabs(a.z-b.z);
@@ -312,10 +312,10 @@ static inline float vec4_equal_eps(vec4 a, vec4 b, float epsilon){
 	}
 	return true;
 }
-static inline float vec4_len(vec4 a){
+inline float vec4_len(vec4 a){
 	return sqrtf(a.x*a.x+a.y*a.y+a.z*a.z+a.w*a.w);
 }
-static inline vec4 vec4_norm(vec4 a){
+inline vec4 vec4_norm(vec4 a){
 	float len = sqrtf(a.x*a.x+a.y*a.y+a.z*a.z+a.w*a.w);
 	a.x /= len;
 	a.y /= len;
@@ -323,102 +323,102 @@ static inline vec4 vec4_norm(vec4 a){
 	a.w /= len;
 	return a;
 }
-static inline vec4 vec4_set(float x, float y, float z, float w){
+inline vec4 vec4_set(float x, float y, float z, float w){
 	vec4 res = {x, y, z, w};
 	return res;
 }
-static inline vec4 vec4_set1(float x){
+inline vec4 vec4_set1(float x){
 	vec4 res = {x, x, x, x};
 	return res;
 }
-static inline vec4 vec4_add(vec4 a, vec4 b){
+inline vec4 vec4_add(vec4 a, vec4 b){
 	a.x += b.x;
 	a.y += b.y;
 	a.z += b.z;
 	a.w += b.w;
 	return a;
 }
-static inline vec4 vec4_sub(vec4 a, vec4 b){
+inline vec4 vec4_sub(vec4 a, vec4 b){
 	a.x -= b.x;
 	a.y -= b.y;
 	a.z -= b.z;
 	a.w -= b.w;
 	return a;
 }
-static inline vec4 vec4_mul(vec4 a, vec4 b){
+inline vec4 vec4_mul(vec4 a, vec4 b){
 	a.x *= b.x;
 	a.y *= b.y;
 	a.z *= b.z;
 	a.w *= b.w;
 	return a;
 }
-static inline vec4 vec4_div(vec4 a, vec4 b){
+inline vec4 vec4_div(vec4 a, vec4 b){
 	a.x /= b.x;
 	a.y /= b.y;
 	a.z /= b.z;
 	a.w /= b.w;
 	return a;
 }
-static inline vec4 vec4_addScal(vec4 a, float scalar){
+inline vec4 vec4_addScal(vec4 a, float scalar){
 	a.x += scalar;
 	a.y += scalar;
 	a.z += scalar;
 	a.w += scalar;
 	return a;
 }
-static inline vec4 vec4_subScal(vec4 a, float scalar){
+inline vec4 vec4_subScal(vec4 a, float scalar){
 	a.x -= scalar;
 	a.y -= scalar;
 	a.z -= scalar;
 	a.w -= scalar;
 	return a;
 }
-static inline vec4 vec4_mulScal(vec4 a, float scalar){
+inline vec4 vec4_mulScal(vec4 a, float scalar){
 	a.x *= scalar;
 	a.y *= scalar;
 	a.z *= scalar;
 	a.w *= scalar;
 	return a;
 }
-static inline vec4 vec4_divScal(vec4 a, float scalar){
+inline vec4 vec4_divScal(vec4 a, float scalar){
 	a.x /= scalar;
 	a.y /= scalar;
 	a.z /= scalar;
 	a.w /= scalar;
 	return a;
 }
-static inline float vec4_dot(vec4 a, vec4 b){
+inline float vec4_dot(vec4 a, vec4 b){
 	return (a.x*b.x+a.y*b.y+a.z*b.z+a.w*b.w);
 }
-static inline vec4 vec4_abs(vec4 a){
+inline vec4 vec4_abs(vec4 a){
 	a.x = fabs(a.x);
 	a.y = fabs(a.y);
 	a.z = fabs(a.z);
 	a.w = fabs(a.w);
 	return a;
 }
-static inline vec4 vec4_ceil(vec4 a){
+inline vec4 vec4_ceil(vec4 a){
 	a.x = ceilf(a.x);
 	a.y = ceilf(a.y);
 	a.z = ceilf(a.z);
 	a.w = ceilf(a.w);
 	return a;
 }
-static inline vec4 vec4_floor(vec4 a){
+inline vec4 vec4_floor(vec4 a){
 	a.x = floorf(a.x);
 	a.y = floorf(a.y);
 	a.z = floorf(a.z);
 	a.w = floorf(a.w);
 	return a;
 }
-static inline vec4 vec4_round(vec4 a){
+inline vec4 vec4_round(vec4 a){
 	a.x = roundf(a.x);
 	a.y = roundf(a.y);
 	a.z = roundf(a.z);
 	a.w = roundf(a.w);
 	return a;
 }
-static inline vec4 vec4_mulMat(vec4 a, mat4 b){
+inline vec4 vec4_mulMat(vec4 a, mat4 b){
 	vec4 res;
 
 	res.vec[0] = a.x*b.m11+a.y*b.m21+a.z*b.m31+a.w*b.m41;
@@ -429,15 +429,15 @@ static inline vec4 vec4_mulMat(vec4 a, mat4 b){
 	return res;
 }
 
-static inline mat4 mat4_set(float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9, float m10, float m11, float m12, float m13, float m14, float m15){
+inline mat4 mat4_set(float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9, float m10, float m11, float m12, float m13, float m14, float m15){
 	mat4 a = {m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15};
 	return a;
 }
-static inline mat4 mat4_set1(float x){
+inline mat4 mat4_set1(float x){
 	mat4 a = {x, x, x, x, x, x, x, x, x, x, x, x, x, x, x, x};
 	return a;
 }
-static inline mat4 mat4_add(mat4 a, mat4 b){
+inline mat4 mat4_add(mat4 a, mat4 b){
 	a.mat[0] = a.mat[0]+b.mat[0];
 	a.mat[1] = a.mat[1]+b.mat[1];
 	a.mat[2] = a.mat[2]+b.mat[2];
@@ -456,7 +456,7 @@ static inline mat4 mat4_add(mat4 a, mat4 b){
 	a.mat[15] = a.mat[15]+b.mat[15];
 	return a;
 }
-static inline mat4 mat4_sub(mat4 a, mat4 b){
+inline mat4 mat4_sub(mat4 a, mat4 b){
 	a.mat[0] = a.mat[0]-b.mat[0];
 	a.mat[1] = a.mat[1]-b.mat[1];
 	a.mat[2] = a.mat[2]-b.mat[2];
@@ -475,7 +475,7 @@ static inline mat4 mat4_sub(mat4 a, mat4 b){
 	a.mat[15] = a.mat[15]-b.mat[15];
 	return a;
 }
-static inline mat4 mat4_mul(mat4 a, mat4 b){
+inline mat4 mat4_mul(mat4 a, mat4 b){
 	mat4 res;
 	res.mat[0] = a.m11*b.m11+a.m21*b.m12+a.m31*b.m13+a.m41*b.m14;
 	res.mat[1] = a.m12*b.m11+a.m22*b.m12+a.m32*b.m13+a.m42*b.m14;
@@ -498,7 +498,7 @@ static inline mat4 mat4_mul(mat4 a, mat4 b){
 	res.mat[15] = a.m14*b.m41+a.m24*b.m42+a.m34*b.m43+a.m44*b.m44;
 	return a;
 }
-static inline mat4 mat4_addScal(mat4 a, float scalar){
+inline mat4 mat4_addScal(mat4 a, float scalar){
 	mat4 scal = {scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar};
 	a.mat[0] = a.mat[0]+scal.mat[0];
 	a.mat[1] = a.mat[1]+scal.mat[1];
@@ -518,7 +518,7 @@ static inline mat4 mat4_addScal(mat4 a, float scalar){
 	a.mat[15] = a.mat[15]+scal.mat[15];
 	return a;
 }
-static inline mat4 mat4_subScal(mat4 a, float scalar){
+inline mat4 mat4_subScal(mat4 a, float scalar){
 	mat4 scal = {scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar};
 	a.mat[0] = a.mat[0]-scal.mat[0];
 	a.mat[1] = a.mat[1]-scal.mat[1];
@@ -538,7 +538,7 @@ static inline mat4 mat4_subScal(mat4 a, float scalar){
 	a.mat[15] = a.mat[15]-scal.mat[15];
 	return a;
 }
-static inline mat4 mat4_mulScal(mat4 a, float scalar){
+inline mat4 mat4_mulScal(mat4 a, float scalar){
 	mat4 scal = {scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar};
 	a.mat[0] = a.mat[0]*scal.mat[0];
 	a.mat[1] = a.mat[1]*scal.mat[1];
@@ -558,7 +558,7 @@ static inline mat4 mat4_mulScal(mat4 a, float scalar){
 	a.mat[15] = a.mat[15]*scal.mat[15];
 	return a;
 }
-static inline mat4 mat4_divScal(mat4 a, float scalar){
+inline mat4 mat4_divScal(mat4 a, float scalar){
 	mat4 scal = {scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar, scalar};
 	a.mat[0] = a.mat[0]/scal.mat[0];
 	a.mat[1] = a.mat[1]/scal.mat[1];
@@ -578,25 +578,25 @@ static inline mat4 mat4_divScal(mat4 a, float scalar){
 	a.mat[15] = a.mat[15]/scal.mat[15];
 	return a;
 }
-static inline mat4 mat4_identity(void){
+inline mat4 mat4_identity(void){
 	mat4 a = {1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f, 0.0f, 0.0f, 0.0f, 0.0f, 1.0f};
 	return a;
 }
-static inline mat4 mat4_translate(float x, float y, float z){
+inline mat4 mat4_translate(float x, float y, float z){
 	mat4 a = {1.0f, 0.0f, 0.0f, 0.0f,
 		0.0f, 1.0f, 0.0f, 0.0f,
 		0.0f, 0.0f, 1.0f, 0.0f,
 		x, y, z, 1.f};
 	return a;
 }
-static inline mat4 mat4_scale(float x, float y, float z){
+inline mat4 mat4_scale(float x, float y, float z){
 	mat4 a = {x, 0.0f, 0.0f, 0.0f,
 		0.0f, y, 0.0f, 0.0f,
 		0.0f, 0.0f, z, 0.0f,
 		0.0f, 0.0f, 0.0f, 1.f};
 	return a;
 }
-static inline mat4 mat4_transpose(mat4 a){
+inline mat4 mat4_transpose(mat4 a){
 	//way faster to just use another matrix instead of a bunch of subtitutions
 	mat4 res = {a.m11, a.m21, a.m31, a.m41,
 		a.m12, a.m22, a.m32, a.m42,
@@ -604,7 +604,7 @@ static inline mat4 mat4_transpose(mat4 a){
 		a.m14, a.m24, a.m34, a.m44};
 	return res;
 }
-static inline mat4 mat4_swapRow(mat4 a, int R1, int R2){
+inline mat4 mat4_swapRow(mat4 a, int R1, int R2){
 	float tmp[4] = {a.mat2D[0][R1], a.mat2D[1][R1], a.mat2D[2][R1], a.mat2D[3][R1]};
 
 	a.mat2D[0][R1] = a.mat2D[0][R2];
@@ -619,7 +619,7 @@ static inline mat4 mat4_swapRow(mat4 a, int R1, int R2){
 
 	return a;
 }
-static inline mat4 mat4_swapCol(mat4 a, int C1, int C2){
+inline mat4 mat4_swapCol(mat4 a, int C1, int C2){
 	float tmp = a.mat2D[C1][0];
 	a.mat2D[C1][0] = a.mat2D[C2][0];
 	a.mat2D[C2][0] = tmp;
@@ -639,15 +639,15 @@ static inline mat4 mat4_swapCol(mat4 a, int C1, int C2){
 	return a;
 }
 
-static inline mat3 mat3_set(float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8){
+inline mat3 mat3_set(float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8){
 	mat3 res = {m0, m1, m2, m3, m4, m5, m6, m7, m8};
 	return res;
 }
-static inline mat3 mat3_set1(float x){
+inline mat3 mat3_set1(float x){
 	mat3 res = {x, x, x, x, x, x, x, x, x};
 	return res;
 }
-static inline mat3 mat3_add(mat3 a, mat3 b){
+inline mat3 mat3_add(mat3 a, mat3 b){
 	a.mat[0] = a.mat[0]+b.mat[0];
 	a.mat[1] = a.mat[1]+b.mat[1];
 	a.mat[2] = a.mat[2]+b.mat[2];
@@ -659,7 +659,7 @@ static inline mat3 mat3_add(mat3 a, mat3 b){
 	a.mat[8] = a.mat[8]+b.mat[8];
 	return a;
 }
-static inline mat3 mat3_sub(mat3 a, mat3 b){
+inline mat3 mat3_sub(mat3 a, mat3 b){
 	a.mat[0] = a.mat[0]-b.mat[0];
 	a.mat[1] = a.mat[1]-b.mat[1];
 	a.mat[2] = a.mat[2]-b.mat[2];
@@ -671,7 +671,7 @@ static inline mat3 mat3_sub(mat3 a, mat3 b){
 	a.mat[8] = a.mat[8]-b.mat[8];
 	return a;
 }
-static inline mat3 mat3_mul(mat3 a, mat3 b){
+inline mat3 mat3_mul(mat3 a, mat3 b){
 	mat3 res;
 
 	res.mat[0] = a.m11*b.m11+a.m21*b.m12+a.m31*b.m13;
@@ -688,7 +688,7 @@ static inline mat3 mat3_mul(mat3 a, mat3 b){
 
 	return res;
 }
-static inline mat3 mat3_addScal(mat3 a, float scalar){
+inline mat3 mat3_addScal(mat3 a, float scalar){
 	a.mat[0] = a.mat[0]+scalar;
 	a.mat[1] = a.mat[1]+scalar;
 	a.mat[2] = a.mat[2]+scalar;
@@ -700,7 +700,7 @@ static inline mat3 mat3_addScal(mat3 a, float scalar){
 	a.mat[8] = a.mat[8]+scalar;
 	return a;
 }
-static inline mat3 mat3_subScal(mat3 a, float scalar){
+inline mat3 mat3_subScal(mat3 a, float scalar){
 	a.mat[0] = a.mat[0]-scalar;
 	a.mat[1] = a.mat[1]-scalar;
 	a.mat[2] = a.mat[2]-scalar;
@@ -712,7 +712,7 @@ static inline mat3 mat3_subScal(mat3 a, float scalar){
 	a.mat[8] = a.mat[8]-scalar;
 	return a;
 }
-static inline mat3 mat3_mulScal(mat3 a, float scalar){
+inline mat3 mat3_mulScal(mat3 a, float scalar){
 	a.mat[0] = a.mat[0]*scalar;
 	a.mat[1] = a.mat[1]*scalar;
 	a.mat[2] = a.mat[2]*scalar;
@@ -724,7 +724,7 @@ static inline mat3 mat3_mulScal(mat3 a, float scalar){
 	a.mat[8] = a.mat[8]*scalar;
 	return a;
 }
-static inline mat3 mat3_divScal(mat3 a, float scalar){
+inline mat3 mat3_divScal(mat3 a, float scalar){
 	a.mat[0] = a.mat[0]/scalar;
 	a.mat[1] = a.mat[1]/scalar;
 	a.mat[2] = a.mat[2]/scalar;
@@ -736,31 +736,31 @@ static inline mat3 mat3_divScal(mat3 a, float scalar){
 	a.mat[8] = a.mat[8]/scalar;
 	return a;
 }
-static inline mat3 mat3_identity(void){
+inline mat3 mat3_identity(void){
 	mat3 res = {1.f, 0.f, 0.f,
 		0.f, 1.f, 0.f,
 		0.f, 0.f, 1.f};
 	return res;
 }
-static inline mat3 mat3_translate(float x, float y){
+inline mat3 mat3_translate(float x, float y){
 	mat3 res = {1.f, 0.f, 0.f,
 		0.f, 1.f, 0.f,
 		y, x, 1.f};
 	return res;
 }
-static inline mat3 mat3_scale(float x, float y){
+inline mat3 mat3_scale(float x, float y){
 	mat3 res = {x, 0.f, 0.f,
 		0.f, y, 0.f,
 		0.f, 0.f, 1.f};
 	return res;
 }
-static inline mat3 mat3_transpose(mat3 a){
+inline mat3 mat3_transpose(mat3 a){
 	mat3 res = {a.m11, a.m21, a.m31,
 		a.m12, a.m22, a.m32,
 		a.m13, a.m23, a.m33};
 	return res;
 }
-static inline mat3 mat3_swapRow(mat3 a, int R1, int R2){
+inline mat3 mat3_swapRow(mat3 a, int R1, int R2){
 	float tmp[3] = {a.mat2D[0][R1], a.mat2D[1][R1], a.mat2D[2][R1]};
 
 	a.mat2D[0][R1] = a.mat2D[0][R2];
@@ -773,7 +773,7 @@ static inline mat3 mat3_swapRow(mat3 a, int R1, int R2){
 	
 	return a;
 }
-static inline mat3 mat3_swapCol(mat3 a, int C1, int C2){
+inline mat3 mat3_swapCol(mat3 a, int C1, int C2){
 	float tmp[3] = {a.mat2D[C1][0], a.mat2D[C1][1], a.mat2D[C1][2]};
 
 	a.mat2D[C1][0] = a.mat2D[C2][0];
@@ -787,29 +787,29 @@ static inline mat3 mat3_swapCol(mat3 a, int C1, int C2){
 	return a;
 }
 
-static inline mat2 mat2_set(float m0, float m1, float m2, float m3){
+inline mat2 mat2_set(float m0, float m1, float m2, float m3){
 	mat2 res = {m0, m1, m2, m3};
 	return res;
 }
-static inline mat2 mat2_set1(float x){
+inline mat2 mat2_set1(float x){
 	mat2 res = {m0, m1, m2, m3};
 	return res;
 }
-static inline mat2 mat2_add(mat2 a, mat2 b){
+inline mat2 mat2_add(mat2 a, mat2 b){
 	a.mat[0] += b.mat[0];
 	a.mat[0] += b.mat[0];
 	a.mat[0] += b.mat[0];
 	a.mat[0] += b.mat[0];
 	return a;
 }
-static inline mat2 mat2_sub(mat2 a, mat2 b){
+inline mat2 mat2_sub(mat2 a, mat2 b){
 	a.mat[0] -= b.mat[0];
 	a.mat[0] -= b.mat[0];
 	a.mat[0] -= b.mat[0];
 	a.mat[0] -= b.mat[0];
 	return a;
 }
-static inline mat2 mat2_mul(mat2 a, mat2 b){
+inline mat2 mat2_mul(mat2 a, mat2 b){
 	mat2 res;
 
 	res.mat[0] = a.m11*b.m11+a.m21*b.m12;
@@ -820,54 +820,54 @@ static inline mat2 mat2_mul(mat2 a, mat2 b){
 
 	return res;
 }
-static inline mat2 mat2_addScal(mat2 a, float scalar){
+inline mat2 mat2_addScal(mat2 a, float scalar){
 	a.mat[0] += scalar;
 	a.mat[0] += scalar;
 	a.mat[0] += scalar;
 	a.mat[0] += scalar;
 	return a;
 }
-static inline mat2 mat2_subScal(mat2 a, float scalar){
+inline mat2 mat2_subScal(mat2 a, float scalar){
 	a.mat[0] -= scalar;
 	a.mat[0] -= scalar;
 	a.mat[0] -= scalar;
 	a.mat[0] -= scalar;
 	return a;
 }
-static inline mat2 mat2_mulScal(mat2 a, float scalar){
+inline mat2 mat2_mulScal(mat2 a, float scalar){
 	a.mat[0] *= scalar;
 	a.mat[0] *= scalar;
 	a.mat[0] *= scalar;
 	a.mat[0] *= scalar;
 	return a;
 }
-static inline mat2 mat2_divScal(mat2 a, float scalar){
+inline mat2 mat2_divScal(mat2 a, float scalar){
 	a.mat[0] /= scalar;
 	a.mat[0] /= scalar;
 	a.mat[0] /= scalar;
 	a.mat[0] /= scalar;
 	return a;
 }
-static inline mat2 mat2_identity(void){
+inline mat2 mat2_identity(void){
 	mat2 res = {1.f, 0.f, 0.f, 1.f};
 }
-static inline mat2 mat2_translate(float x){
+inline mat2 mat2_translate(float x){
 	mat2 res = {1.f, 1.f, x, 1.f};
 	return res;
 }
-static inline mat2 mat2_scale(float x){
+inline mat2 mat2_scale(float x){
 	mat2 res = {1.f, 0.f, 0.f, x};
 	return res;
 }
-static inline mat2 mat2_transpose(mat2 a){
+inline mat2 mat2_transpose(mat2 a){
 	mat2 res = {a.m11, a.m21, a.m12, a.m22};
 	return res;
 }
-static inline mat2 mat2_swapRow(mat2 a){
+inline mat2 mat2_swapRow(mat2 a){
 	mat2 res = {a.m12, a.m11, a.m22, a.m21};
 	return res;
 }
-static inline mat2 mat2_swapCol(mat2 a){
+inline mat2 mat2_swapCol(mat2 a){
 	mat2 res = {a.m21, a.m22, a.m11, a.m12};
 	return res;
 }
