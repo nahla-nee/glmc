@@ -89,11 +89,11 @@ inline vec2 vec2_norm(vec2 a){
 	return a;
 }
 inline vec2 vec2_set(float x, float y){
-	vec2 res = {x, y, 0.0f, 0.0f};
+	vec2 res = {x, y};
 	return res;
 }
 inline vec2 vec2_set1(float x){
-	vec2 res = {x, x, 0.0f, 0.0f};
+	vec2 res = {x, x};
 	return res;
 }
 inline vec2 vec2_add(vec2 a, vec2 b){
@@ -162,9 +162,8 @@ inline vec2 vec2_round(vec2 a){
 inline vec2 vec2_mulMat(vec2 a, mat2 b){
 	vec2 res;
 
-	res.vec[0] = a.x*b.m11+a.y*b.m21+a.z*b.m31;
-	res.vec[1] = a.x*b.m12+a.y*b.m22+a.z*b.m32;
-	res.vec[2] = a.x*b.m13+a.y*b.m23+a.z*b.m33;
+	res.vec[0] = a.x*b.m11+a.y*b.m21;
+	res.vec[1] = a.x*b.m12+a.y*b.m22;
 
 	return res;
 }
@@ -199,11 +198,11 @@ inline vec3 vec3_norm(vec3 a){
 	return a;
 }
 inline vec3 vec3_set(float x, float y, float z){
-	vec3 res = {x, y, z, 0.0f};
+	vec3 res = {x, y, z};
 	return res;
 }
 inline vec3 vec3_set1(float x){
-	vec3 res = {x, x, x, 0.0f};
+	vec3 res = {x, x, x};
 	return res;
 }
 inline vec3 vec3_add(vec3 a, vec3 b){
@@ -792,7 +791,7 @@ inline mat2 mat2_set(float m0, float m1, float m2, float m3){
 	return res;
 }
 inline mat2 mat2_set1(float x){
-	mat2 res = {m0, m1, m2, m3};
+	mat2 res = {x, x, x, x};
 	return res;
 }
 inline mat2 mat2_add(mat2 a, mat2 b){
