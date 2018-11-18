@@ -10,7 +10,7 @@ extern "C"{
 
 #include <math.h>
 #include <float.h>
-#include <bool.h>
+#include <stdbool.h>
 
 typedef union vec2{
 	float vec[2];
