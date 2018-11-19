@@ -11,7 +11,7 @@ extern "C"{
 #include <math.h>
 #include <float.h>
 #include <smmintrin.h>
-#include "matrix/matrix4.h"
+#include "../matrix/matrix4.h"
 
 bool vec4_equal(__m128 a, __m128 b);
 bool vec4_equal_eps(__m128 a, __m128 b, float epsilon);
