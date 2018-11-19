@@ -1,13 +1,11 @@
 #ifndef GLMC_VECTOR
 #define GLMC_VECTOR
 
-#include "vector2.h"
-#include "vector3.h"
-#include "vector4.h"
-
 #ifdef __cplusplus
 extern "C"{
 #endif
+
+#include <smmintrin.h>
 
 __m128 vec_set1(float x);
 __m128 vec_add(__m128 a, __m128 b);
