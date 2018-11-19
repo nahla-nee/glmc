@@ -1,7 +1,7 @@
 #ifndef GLMC_VECTOR2_PLAIN
 #define GLMC_VECTOR2_PLAIN
 
-#include "defs_plain.h"
+#include "../defs_plain.h"
 
 #ifdef __cplusplus
 extern "C"{

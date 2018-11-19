@@ -1,7 +1,7 @@
 #ifndef GLMC_MATRIX2
 #define GLMC_MATRIX2
 
-#include "defs.h"
+#include "../defs.h"
 
 #ifdef __cplusplus
 extern "C"{

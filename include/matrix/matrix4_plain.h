@@ -1,7 +1,7 @@
 #ifndef GLMC_MATRIX4_PLAIN
 #define GLMC_MATRIX4_PLAIN
 
-#include "defs_plain.h"
+#include "../defs_plain.h"
 
 #ifdef __cplusplus
 extern "C"{

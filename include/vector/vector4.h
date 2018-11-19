@@ -1,7 +1,7 @@
 #ifndef GLMC_VECTOR4
 #define GLMC_VECTOR4
 
-#include "defs.h"
+#include "../defs.h"
 
 #ifdef __cplusplus
 extern "C"{
