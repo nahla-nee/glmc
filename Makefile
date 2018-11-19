@@ -18,7 +18,9 @@ sse:
 
 	mkdir glmc
 	mkdir glmc/matrix glmc/vector
-	cp include/defs.h include/glmc.h $(MATINC) $(VECINC) glmc/
+	cp include/defs.h include/glmc.h glmc/
+	cp $(MATINC) glmc/matrix
+	cp $(VECINC) glmc/vector
 	mv libglmc.a glmc
 
 plain:
@@ -27,7 +29,9 @@ plain:
 
 	mkdir glmc
 	mkdir glmc/matrix glmc/vector
-	cp include/defs.h include/glmc.h $(MATINC_PLAIN) $(VECINC_PLAIN) glmc/
+	cp include/defs.h include/glmc.h glmc/
+	cp $(MATINC_PLAIN) glmc/matrix
+	cp $(VECINC_PLAIN) glmc/vector
 	mv libglmc.a glmc
 
 .PHONY: clean
