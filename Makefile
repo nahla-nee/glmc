@@ -6,11 +6,11 @@ VECSRC = src/vector/vector.c src/vector/vector2.c src/vector/vector3.c src/vecto
 MATSRC_PLAIN = src/matrix/matrix2_plain.c src/matrix/matrix3_plain.c src/matrix/matrix4_plain.c
 VECSRC_PLAIN = src/vector/vector2_plain.c src/vector/vector3_plain.c src/vector/vector4_plain.c
 
-MATINC = include/matrix/matrix2.h include/matrix/matrix3.h include/matrix/matrix4.h
+MATINC = include/matrix/matrix.h include/matrix/matrix2.h include/matrix/matrix3.h include/matrix/matrix4.h
 VECINC = include/vector/vector.h include/vector/vector2.h include/vector/vector3.h include/vector/vector4.h
 
-MATINC_PLAIN = include/matrix/matrix2_plain.h include/matrix/matrix3_plain.h include/matrix/matrix4_plain.h
-VECINC_PLAIN = include/vector/vector2_plain.h include/vector/vector3_plain.h include/vector/vector4_plain.h
+MATINC_PLAIN = include/matrix/matrix_plain.h include/matrix/matrix2_plain.h include/matrix/matrix3_plain.h include/matrix/matrix4_plain.h
+VECINC_PLAIN = include/vector/vector_plain.h include/vector/vector2_plain.h include/vector/vector3_plain.h include/vector/vector4_plain.h
 
 sse:
 	cc $(FLAGS) -msse4.1 $(MATSRC) $(VECSRC)
