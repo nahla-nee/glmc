@@ -6,17 +6,17 @@
 
 #define vec4_set1(x) vec_set1(x)
 #define vec4_add(a, b) vec_add(a, b)
-#define vec4_sub(a, b) vec_sub(__m128 a, __m128 b)
-#define vec4_mul(a, b) vec_mul(__m128 a, __m128 b)
-#define vec4_div(a, b) vec_div(__m128 a, __m128 b)
-#define vec4_addScal(a, scalar) vec_addScal(__m128 a, float scalar)
-#define vec4_subScal(a, scalar) vec_subScal(__m128 a, float scalar)
-#define vec4_mulScal(a, scalar) vec_mulScal(__m128 a, float scalar)
-#define vec4_divScal(a, scalar) vec_divScal(__m128 a, float scalar)
-#define vec4_abs(a) vec_abs(__m128 a)
-#define vec4_ceil(a) vec_ceil(__m128 a)
-#define vec4_floor(a) vec_floor(__m128 a)
-#define vec4_round(a) vec_round(__m128 a)
+#define vec4_sub(a, b) vec_sub(a, b)
+#define vec4_mul(a, b) vec_mul(a, b)
+#define vec4_div(a, b) vec_div(a, b)
+#define vec4_addScal(a, scalar) vec_addScal(a, scalar)
+#define vec4_subScal(a, scalar) vec_subScal(a, scalar)
+#define vec4_mulScal(a, scalar) vec_mulScal(a, scalar)
+#define vec4_divScal(a, scalar) vec_divScal(a, scalar)
+#define vec4_abs(a) vec_abs(a)
+#define vec4_ceil(a) vec_ceil(a)
+#define vec4_floor(a) vec_floor(a)
+#define vec4_round(a) vec_round(a)
 
 #ifdef __cplusplus
 extern "C"{
@@ -26,7 +26,6 @@ extern "C"{
 #include <math.h>
 #include <float.h>
 #include <smmintrin.h>
-#include "../matrix/matrix4.h"
 
 bool vec4_equal(__m128 a, __m128 b);
 bool vec4_equal_eps(__m128 a, __m128 b, float epsilon);

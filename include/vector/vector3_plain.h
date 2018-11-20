@@ -10,7 +10,6 @@ extern "C"{
 #include <stdbool.h>
 #include <math.h>
 #include <float.h>
-#include "../matrix/matrix3_plain.h"
 
 float vec3_equal(vec3 a, vec3 b);
 float vec3_equal_eps(vec3 a, vec3 b, float epsilon);
