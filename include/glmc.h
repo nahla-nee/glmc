@@ -8,6 +8,7 @@
 #include "vector/vector2.h"
 #include "vector/vector3.h"
 #include "vector/vector4.h"
+#include "vector/quat.h"
 
 #include "matrix/matrix.h"
 

@@ -37,6 +37,13 @@ typedef union vec4{
 	};
 } vec4;
 
+typedef union quat{
+	__m128 vec;
+	struct{
+		float w, x, y, z;
+	};
+} quat;
+
 typedef union mat2{
 	__m128 mat;
 	float mat2D[2][2];
