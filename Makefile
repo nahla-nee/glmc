@@ -1,4 +1,4 @@
-FLAGS = -Iinclude/ -lm -std=c99 -c
+FLAGS = -Iinclude/ -lm -std=c99 -c -O3
 
 MATSRC = src/matrix/matrix2.c src/matrix/matrix3.c src/matrix/matrix4.c
 VECSRC = src/vector/vector.c src/vector/vector2.c src/vector/vector3.c src/vector/vector4.c
