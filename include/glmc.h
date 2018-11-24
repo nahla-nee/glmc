@@ -8,9 +8,10 @@
 #include "vector/vector2.h"
 #include "vector/vector3.h"
 #include "vector/vector4.h"
+#include "vector/quaternion.h"
 
-#include "matrix2.h"
-#include "matrix3.h"
-#include "matrix4.h"
+#include "matrix/matrix2.h"
+#include "matrix/matrix3.h"
+#include "matrix/matrix4.h"
 
 #endif /*GLMC_H*/
