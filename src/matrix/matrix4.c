@@ -116,7 +116,7 @@ mat4 mat4_transpose(mat4 a){
 	return a;
 }
 mat4 mat4_swapRow(mat4 a, int R1, int R2){
-	vec4 tmp = GLMC_CAST(vec4, _mm_set_ps(a.mat[3][R1], a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]));
+	vec4 tmp = (vec4)_mm_set_ps(a.mat[3][R1], a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]);
 	a.mat2D[3][R1] = a.mat2D[3][R2];
 	a.mat2D[2][R1] = a.mat2D[2][R2];
 	a.mat2D[1][R1] = a.mat2D[1][R2];

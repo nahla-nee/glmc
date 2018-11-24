@@ -102,7 +102,7 @@ mat3 mat3_transpose(mat3 a){
 	return res;
 }
 mat3 mat3_swapRow(mat3 a, int R1, int R2){
-	vec3 tmp = GLMC_CAST(vec3, _mm_set_ps(0.f, a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]));
+	vec3 tmp = (vec3)_mm_set_ps(0.f, a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]);
 	a.mat2D[2][R1] = a.mat2D[2][R2];
 	a.mat2D[1][R1] = a.mat2D[1][R2];
 	a.mat2D[0][R1] = a.mat2D[0][R2];
