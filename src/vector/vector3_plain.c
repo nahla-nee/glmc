@@ -87,6 +87,11 @@ vec3 vec3_divScal(vec3 a, float scalar){
 float vec3_dot(vec3 a, vec3 b){
 	return (a.x*b.x+a.y*b.y+a.z*b.z);
 }
+vec3 vec3_cross(vec3 a, vec3 b){
+	return (vec3){a.y*b.z-a.z*b.y,
+		a.z*b.x-a.x*b.z,
+		a.x*b.y-a.y*b.x};
+}
 vec3 vec3_abs(vec3 a){
 	a.x = fabs(a.x);
 	a.y = fabs(a.y);

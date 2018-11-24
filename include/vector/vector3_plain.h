@@ -26,6 +26,7 @@ vec3 vec3_subScal(vec3 a, float scalar);
 vec3 vec3_mulScal(vec3 a, float scalar);
 vec3 vec3_divScal(vec3 a, float scalar);
 float vec3_dot(vec3 a, vec3 b);
+vec3 vec3_cross(vec3 a, vec3 b);
 vec3 vec3_abs(vec3 a);
 vec3 vec3_ceil(vec3 a);
 vec3 vec3_floor(vec3 a);

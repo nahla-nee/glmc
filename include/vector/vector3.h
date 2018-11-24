@@ -32,6 +32,7 @@ bool vec3_equal_eps(__m128 a, __m128 b, float epsilon);
 float vec3_len(__m128 a);
 __m128 vec3_norm(__m128 a);
 float vec3_dot(__m128 a, __m128 b);
+__m128 vec3_cross(__m128 a, __m128 b);
 __m128 vec3_set(float x, float y, float z);
 __m128 vec3_mulMat(__m128 a, mat3 b);
 

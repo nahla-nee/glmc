@@ -2,10 +2,7 @@
 #define GLMC_DEFS
 
 #ifdef __cplusplus
-#define GLMC_CAST(TYPE, DATA) TYPE{DATA}
 extern "C"{
-#else
-#define GLMC_CAST(TYPE, DATA) (TYPE) DATA
 #endif
 
 #include <smmintrin.h>

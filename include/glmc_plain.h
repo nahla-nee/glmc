@@ -6,6 +6,7 @@
 #include "vector/vector2_plain.h"
 #include "vector/vector3_plain.h"
 #include "vector/vector4_plain.h"
+#include "vector/quaternion_plain.h"
 
 #include "matrix/matrix2_plain.h"
 #include "matrix/matrix3_plain.h"

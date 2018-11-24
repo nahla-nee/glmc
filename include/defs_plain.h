@@ -2,10 +2,7 @@
 #define GLMC_DEFS_PLAIN
 
 #ifdef __cplusplus
-#define GLMC_CAST(TYPE, DATA) TYPE{DATA}
 extern "C"{
-#else
-#define GLMC_CAST(TYPE, DATA) (TYPE) DATA
 #endif
 
 typedef union vec2{
@@ -34,6 +31,15 @@ typedef union vec4{
 		float r, g, b, a;
 	};
 } vec4;
+
+typedef union quat{
+	struct{
+		float w, x, y, z;
+	};
+	struct{
+		float s, i, j, k;
+	};
+} quat;
 
 typedef union mat2{
 	float mat[4];
