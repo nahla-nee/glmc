@@ -22,13 +22,6 @@ quat quat_sub(quat a, quat b){
 	a.z-=b.z;
 	return a;
 }
-quat quat_div(quat a, quat b){
-	a.w/=b.w;
-	a.x/=b.x;
-	a.y/=b.y;
-	a.z/=b.z;
-	return a;
-}
 quat quat_addScal(quat a, float scalar){
 	a.w+=scalar;
 	a.x+=scalar;
@@ -116,7 +109,57 @@ quat quat_norm(quat a){
 	a.z/=len;
 	return a;
 }
+quat quat_conj(quat a){
+	a.x *= -1;
+	a.y *= -1;
+	a.z *= -1;
+	return a;
+}
+quat quat_inv(quat a){
+	float len = sqrtf(a.w*a.w+a.x*a.x+a.y*a.y+a.z*a.z);
+	a.x *= -1;
+	a.y *= -1;
+	a.z *= -1;
+
+	a.w /= len;
+	a.x /= len;
+	a.y /= len;
+	a.z /= len;
+}
 quat quat_mul(quat a, quat b){
+	quat res;
+	//scalar
+	res.w = (a.w*b.w-(a.x*b.x+a.y*b.y+a.z*b.z));
+
+	//vector
+	/*result of adding the vector resulting from multiplying vector a by scalar b
+	with the result of multiplying vector b by scalar a*/
+	res.x = a.w*b.x+b.w*a.x;
+	res.y = a.w*b.y+b.w*a.y;
+	res.z = a.w*b.z+b.w*a.z;
+
+	//cross multiply a and b and add to res gives the final vector of res
+	quat cross = {0.0f, a.y*b.z-a.z*b.y,
+		a.z*b.x-a.x*b.z,
+		a.x*b.y-a.y*b.x};
+	res.x+=cross.x;
+	res.y+=cross.y;
+	res.z+=cross.z;
+	return res;
+}
+quat quat_div(quat a, quat b){
+	//inverse b
+	float len = sqrtf(b.w*b.w+b.x*b.x+b.y*b.y+b.z*b.z);
+	b.x *= -1;
+	b.y *= -1;
+	b.z *= -1;
+
+	b.w /= len;
+	b.x /= len;
+	b.y /= len;
+	b.z /= len;
+
+	//multiply a and b
 	quat res;
 	//scalar
 	res.w = (a.w*b.w-(a.x*b.x+a.y*b.y+a.z*b.z));

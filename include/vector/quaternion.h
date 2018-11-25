@@ -7,7 +7,6 @@
 #define quat_set1(x) vec_set1(x)
 #define quat_add(a, b) vec_add(a, b)
 #define quat_sub(a, b) vec_sub(__m128 a, __m128 b)
-#define quat_div(a, b) vec_div(__m128 a, __m128 b)
 #define quat_addScal(a, scalar) vec_addScal(__m128 a, float scalar)
 #define quat_subScal(a, scalar) vec_subScal(__m128 a, float scalar)
 #define quat_mulScal(a, scalar) vec_mulScal(__m128 a, float scalar)
@@ -31,7 +30,10 @@ bool quat_equal_eps(__m128 a, __m128 b, float epsilon);
 float quat_len(__m128 a);
 __m128 quat_norm(__m128 a);
 __m128 quat_set(float x, float y, float z, float w);
+__m128 quat_conj(__m128 a);
+__m128 quat_inv(__m128 a);
 __m128 quat_mul(__m128 a, __m128 b);
+__m128 quat_div(__m128 a, __m128 b);
 
 #ifdef __cplusplus
 }
