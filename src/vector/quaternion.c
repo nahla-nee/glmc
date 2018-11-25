@@ -32,7 +32,7 @@ __m128 quat_set(float w, float x, float y, float z){
 	return _mm_set_ps(z, y, x, w);
 }
 __m128 quat_conj(__m128 a){
-	return _mm_mul_ps(a, _mm_set_ps(-1.f, -1.f, -1.f. 1.f));
+	return _mm_mul_ps(a, _mm_set_ps(-1.f, -1.f, -1.f, 1.f));
 }
 __m128 quat_inv(__m128 a){
 	quat square = (quat)_mm_mul_ps(a, a);
