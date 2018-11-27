@@ -53,10 +53,10 @@ typedef union mat2{
 //need padding in certain spots
 typedef union mat3{
 	__m128 mat[3];
-	float mat2D[4][4];
-	float mat1D[16];
+	float mat2D[3][3];
+	float mat1D[9];
 	struct{
-		float m0, m1, m2, pad1, m3, m4, m5, pad2, m6, m7, m8, pad3;
+		float m0, m1, m2, m3, m4, m5, m6, m7, m8, pad1, pad2, pad3;
 	};
 } mat3;
 

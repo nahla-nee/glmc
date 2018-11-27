@@ -144,6 +144,6 @@ mat3 mat3_swapCol(mat3 a, int C1, int C2){
 	a.mat2D[C2][0] = tmp[0];
 	a.mat2D[C2][1] = tmp[1];
 	a.mat2D[C2][2] = tmp[2];
-	
+
 	return a;
 }
