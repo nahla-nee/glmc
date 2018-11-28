@@ -4,26 +4,26 @@ mat3 mat3_set(float m0, float m1, float m2, float m3, float m4, float m5, float 
 	mat3 res;
 	res.mat[0] = _mm_set_ps(m3, m2, m1, m0);
 	res.mat[1] = _mm_set_ps(m7, m6, m5, m4);
-	res.mat[2] = _mm_set_ps(0.f, 0.f, 0.f, m8);
+	res.m8 = m8;
 	return res;
 }
 mat3 mat3_set1(float x){
 	mat3 res;
 	res.mat[0] = _mm_set1_ps(x);
 	res.mat[1] = res.mat[0];
-	res.mat[2] = res.mat[0];
+	res.m8 = x;
 	return res;
 }
 mat3 mat3_add(mat3 a, mat3 b){
 	a.mat[0] = _mm_add_ps(a.mat[0], b.mat[0]);
 	a.mat[1] = _mm_add_ps(a.mat[1], b.mat[1]);
-	a.mat[2] = _mm_add_ps(a.mat[2], b.mat[2]);
+	a.m8 += b.m8;
 	return a;
 }
 mat3 mat3_sub(mat3 a, mat3 b){
 	a.mat[0] = _mm_sub_ps(a.mat[0], b.mat[0]);
 	a.mat[1] = _mm_sub_ps(a.mat[1], b.mat[1]);
-	a.mat[2] = _mm_sub_ps(a.mat[2], b.mat[2]);
+	a.m8 -= b.m8;
 	return a;
 }
 mat3 mat3_mul(mat3 a, mat3 b){
@@ -47,51 +47,49 @@ mat3 mat3_addScal(mat3 a, float scalar){
 	__m128 scal = _mm_set1_ps(scalar);
 	a.mat[0] = _mm_add_ps(a.mat[0], scal);
 	a.mat[1] = _mm_add_ps(a.mat[1], scal);
-	a.mat[2] = _mm_add_ps(a.mat[2], scal);
+	a.m8 += scalar;
 	return a;
 }
 mat3 mat3_subScal(mat3 a, float scalar){
 	__m128 scal = _mm_set1_ps(scalar);
 	a.mat[0] = _mm_sub_ps(a.mat[0], scal);
 	a.mat[1] = _mm_sub_ps(a.mat[1], scal);
-	a.mat[2] = _mm_sub_ps(a.mat[2], scal);
+	a.m8 -= scalar;
 	return a;
 }
 mat3 mat3_mulScal(mat3 a, float scalar){
 	__m128 scal = _mm_set1_ps(scalar);
 	a.mat[0] = _mm_mul_ps(a.mat[0], scal);
 	a.mat[1] = _mm_mul_ps(a.mat[1], scal);
-	a.mat[2] = _mm_mul_ps(a.mat[2], scal);
+	a.m8 *= scalar;
 	return a;
 }
 mat3 mat3_divScal(mat3 a, float scalar){
 	__m128 scal = _mm_set1_ps(scalar);
 	a.mat[0] = _mm_div_ps(a.mat[0], scal);
 	a.mat[1] = _mm_div_ps(a.mat[1], scal);
-	a.mat[2] = _mm_div_ps(a.mat[2], scal);
+	a.m8 /= scalar;
 	return a;
 }
 mat3 mat3_identity(void){
 	mat3 res;
 	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
 	res.mat[1] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
-	res.mat[2] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
+	res.m8 = 1.f;
 	return res;
 }
 mat3 mat3_translate(float x, float y){
 	mat3 res;
 	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
 	res.mat[1] = _mm_set_ps(y, x, 0.f, 1.f);
-	res.mat[2] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
-
+	res.m8 = 1.f;
 	return res;
 }
 mat3 mat3_scale(float x, float y){
 	mat3 res;
 	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, x);
 	res.mat[1] = _mm_set_ps(0.f, 0.f, 0.f, y);
-	res.mat[2] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
-
+	res.m8 = 1.f;
 	return res;
 }
 mat3 mat3_transpose(mat3 a){

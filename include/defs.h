@@ -50,13 +50,13 @@ typedef union mat2{
 	};
 } mat2;
 
-//need padding in certain spots
+//no need for using another sse, its just as fast to use a float
 typedef union mat3{
-	__m128 mat[3];
+	__m128 mat[2];
 	float mat2D[3][3];
 	float mat1D[9];
 	struct{
-		float m0, m1, m2, m3, m4, m5, m6, m7, m8, pad1, pad2, pad3;
+		float m0, m1, m2, m3, m4, m5, m6, m7, m8;
 	};
 } mat3;
 
