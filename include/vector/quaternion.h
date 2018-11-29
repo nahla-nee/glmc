@@ -33,6 +33,8 @@ __m128 quat_set(float x, float y, float z, float w);
 __m128 quat_conj(__m128 a);
 __m128 quat_inv(__m128 a);
 __m128 quat_mul(__m128 a, __m128 b);
+__m128 quat_mulReal(__m128 a, __m128 b);
+__m128 quat_mulPure(__m128 a, __m128 b);
 __m128 quat_div(__m128 a, __m128 b);
 
 #ifdef __cplusplus

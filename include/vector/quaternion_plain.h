@@ -30,6 +30,8 @@ quat quat_set(float w, float x, float y, float z);
 quat quat_conj(quat a);
 quat quat_inv(quat a);
 quat quat_mul(quat a, quat b);
+quat quat_mulReal(quat a, quat b);
+quat quat_mulPure(quat a, quat b);
 quat quat_div(quat a, quat b);
 
 #ifdef __cplusplus

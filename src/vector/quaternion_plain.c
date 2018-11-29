@@ -147,6 +147,25 @@ quat quat_mul(quat a, quat b){
 	res.z+=cross.z;
 	return res;
 }
+quat quat_mulReal(quat a, quat b){
+	a.w*=b.w;
+	//dont need to 0 out rest of a, its assumed that its 0 otherwise this function wouldnt be called
+	return a;
+}
+quat quat_mulPure(quat a, quat b){
+	//scalar
+	a.w = -(a.x*b.x+a.y*b.y+a.z*b.z);
+
+	//vector
+	quat cross = {0.0f, a.y*b.z-a.z*b.y,
+		a.z*b.x-a.x*b.z,
+		a.x*b.y-a.y*b.x};
+	a.x+=cross.x;
+	a.y+=cross.y;
+	a.z+=cross.z;
+
+	return a;
+}
 quat quat_div(quat a, quat b){
 	//inverse b
 	float len = sqrtf(b.w*b.w+b.x*b.x+b.y*b.y+b.z*b.z);

@@ -41,7 +41,6 @@ __m128 quat_inv(__m128 a){
 }
 __m128 quat_mul(__m128 a, __m128 b){
 	//vector component of the result
-	quat scalar = (quat)_mm_mul_ps(a, b);
 
 	//multiply the b vector by the a scalar and the a vector by the b scalar and add the two resulting vectors
 	//the w component of this result is ignored
@@ -61,6 +60,34 @@ __m128 quat_mul(__m128 a, __m128 b){
 	res.vec = _mm_add_ps(res.vec, _mm_sub_ps(lhs, rhs));
 
 	//scalar component of the result
+	quat scalar = (quat)_mm_mul_ps(a, b);
+	res.w = scalar.w-(scalar.x+scalar.y+scalar.z);
+	return res.vec;
+}
+__m128 quat_mulReal(__m128 a, __m128 b){
+	//x, y, and z should be 0 when calling this function so mul doesnt mess up anything
+	return _mm_mul_ps(a, b);
+}
+__m128 quat_mulPure(__m128 a, __m128 b){
+	quat res;
+
+	//vector part
+
+	//cross multiplication
+	//construct left hand side of vector equation
+	//using x as the last component allows this to be done using a single shufps
+	__m128 lhs = {((quat)a).x, ((quat)a).y, ((quat)a).z, ((quat)a).x};
+	__m128 tmp = {((quat)b).x, ((quat)b).z, ((quat)b).x, ((quat)b).y};
+	lhs = _mm_mul_ps(lhs, tmp);
+
+	//construct the right hand side
+	tmp = _mm_set_ps(((quat)a).y, ((quat)a).x, ((quat)a).z, ((quat)a).x);
+	__m128 rhs = {((quat)b).x, ((quat)b).y, ((quat)b).z, ((quat)b).x};
+	rhs = _mm_mul_ps(tmp, rhs);
+	res.vec = _mm_add_ps(res.vec, _mm_sub_ps(lhs, rhs));
+
+	//scalar part
+	quat scalar = (quat)_mm_mul_ps(a, b);
 	res.w = scalar.w-(scalar.x+scalar.y+scalar.z);
 	return res.vec;
 }
