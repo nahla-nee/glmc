@@ -99,18 +99,23 @@ __m128 quat_div(__m128 a, __m128 b){
 	b = _mm_div_ps(b, _mm_set1_ps(len));
 
 	//vector component of the result
-	__m128 lhs = {((quat)a).x, ((quat)a).y, ((quat)a).z, ((quat)a).x};
-	__m128 tmp = {((quat)b).x, ((quat)b).z, ((quat)b).x, ((quat)b).y};
+	quat res = (quat)_mm_add_ps(_mm_mul_ps(_mm_set1_ps(((quat)a).w), b), _mm_mul_ps(_mm_set1_ps(((quat)b).w), a));
+
+	//cross multiplication
+	//construct left hand side of vector equation
+	//using x as the last component allows this to be done using a single shufps
+	__m128 lhs = {((quat)a).y, ((quat)a).z, ((quat)a).x, ((quat)a).x};
+	__m128 tmp = {((quat)b).z, ((quat)b).x, ((quat)b).y, ((quat)b).x};
 	lhs = _mm_mul_ps(lhs, tmp);
 
 	//construct the right hand side
-	tmp = _mm_set_ps(((quat)a).y, ((quat)a).x, ((quat)a).z, ((quat)a).x);
-	__m128 rhs = {((quat)b).x, ((quat)b).y, ((quat)b).z, ((quat)b).x};
+	tmp = _mm_set_ps(((quat)a).x, ((quat)a).y, ((quat)a).x, ((quat)a).z);
+	__m128 rhs = {((quat)b).y, ((quat)b).z, ((quat)b).x, ((quat)b).x};
 	rhs = _mm_mul_ps(tmp, rhs);
 	res.vec = _mm_add_ps(res.vec, _mm_sub_ps(lhs, rhs));
 
 	//scalar component of the result
+	quat scalar = (quat)_mm_mul_ps(a, b);
 	res.w = scalar.w-(scalar.x+scalar.y+scalar.z);
-
 	return res.vec;
 }
