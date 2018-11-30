@@ -34,7 +34,7 @@ typedef union vec4{
 
 typedef union quat{
 	struct{
-		float w, x, y, z;
+		float x, y, z, w;
 	};
 	struct{
 		float s, i, j, k;

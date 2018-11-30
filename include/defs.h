@@ -37,7 +37,7 @@ typedef union vec4{
 typedef union quat{
 	__m128 vec;
 	struct{
-		float w, x, y, z;
+		float x, y, z, w;
 	};
 } quat;
 
