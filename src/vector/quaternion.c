@@ -28,7 +28,7 @@ __m128 quat_norm(__m128 a){
 	quat tmp = (quat)_mm_mul_ps(a, a);
 	return _mm_div_ps(a, _mm_set1_ps(sqrtf(tmp.x+tmp.y+tmp.z+tmp.w)));
 }
-__m128 quat_set(float x, float y, float z, float w){
+__m128 quat_set(float w, float x, float y, float z){
 	return _mm_set_ps(w, z, y, x);
 }
 __m128 quat_conj(__m128 a){
