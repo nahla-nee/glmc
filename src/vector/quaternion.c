@@ -77,13 +77,13 @@ __m128 quat_mulPure(__m128 a, __m128 b){
 	//cross multiplication
 	//construct left hand side of vector equation
 	//using x as the last component allows this to be done using a single shufps
-	__m128 lhs = {((quat)a).x, ((quat)a).y, ((quat)a).z, ((quat)a).x};
-	__m128 tmp = {((quat)b).x, ((quat)b).z, ((quat)b).x, ((quat)b).y};
+	__m128 lhs = {((quat)a).y, ((quat)a).z, ((quat)a).x, ((quat)a).x};
+	__m128 tmp = {((quat)b).z, ((quat)b).x, ((quat)b).y, ((quat)b).x};
 	lhs = _mm_mul_ps(lhs, tmp);
 
 	//construct the right hand side
-	tmp = _mm_set_ps(((quat)a).y, ((quat)a).x, ((quat)a).z, ((quat)a).x);
-	__m128 rhs = {((quat)b).x, ((quat)b).y, ((quat)b).z, ((quat)b).x};
+	tmp = _mm_set_ps(((quat)a).x, ((quat)a).y, ((quat)a).x, ((quat)a).z);
+	__m128 rhs = {((quat)b).y, ((quat)b).z, ((quat)b).x, ((quat)b).x};
 	rhs = _mm_mul_ps(tmp, rhs);
 	res.vec = _mm_add_ps(res.vec, _mm_sub_ps(lhs, rhs));
 
