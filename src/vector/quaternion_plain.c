@@ -199,3 +199,8 @@ quat quat_div(quat a, quat b){
 	res.z+=cross.z;
 	return res;
 }
+
+quat quat_rotation(float angle, float x, float y, float z){
+	quat res = {1.0f*cosf(angle), x*sin(angle), y*sin(angle), z*sin(angle)};
+	return res;
+}

@@ -36,6 +36,7 @@ __m128 quat_mul(__m128 a, __m128 b);
 __m128 quat_mulReal(__m128 a, __m128 b);
 __m128 quat_mulPure(__m128 a, __m128 b);
 __m128 quat_div(__m128 a, __m128 b);
+__m128 quat_rotation(float angle, float x, float y, float z);
 
 #ifdef __cplusplus
 }

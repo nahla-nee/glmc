@@ -119,3 +119,11 @@ __m128 quat_div(__m128 a, __m128 b){
 	res.w = scalar.w-(scalar.x+scalar.y+scalar.z);
 	return res.vec;
 }
+
+__m128 quat_rotation(float angle, float x, float y, float z){
+	__m128 res = _mm_set_ps(1.0f, z, y, x);
+	float s = sin(angle);
+	float c = cos(angle);
+	res = _mm_mul_ps(res, _mm_set_ps(c, s, s, s));
+	return res;
+}
