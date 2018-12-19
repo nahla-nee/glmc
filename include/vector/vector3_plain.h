@@ -3,13 +3,14 @@
 
 #include "../defs_plain.h"
 
-#ifdef __cplusplus
-extern "C"{
-#endif
-
 #include <stdbool.h>
 #include <math.h>
 #include <float.h>
+
+#ifdef __cplusplus
+namespace glmc{
+extern "C"{
+#endif
 
 float vec3_equal(vec3 a, vec3 b);
 float vec3_equal_eps(vec3 a, vec3 b, float epsilon);
@@ -34,6 +35,7 @@ vec3 vec3_round(vec3 a);
 vec3 vec3_mulMat(vec3 a, mat3 b);
 
 #ifdef __cplusplus
+}
 }
 #endif
 

@@ -1,11 +1,13 @@
 #ifndef GLMC_DEFS
 #define GLMC_DEFS
 
+#include <smmintrin.h>
+
 #ifdef __cplusplus
+namespace glmc{
 extern "C"{
 #endif
 
-#include <smmintrin.h>
 
 typedef union vec2{
 	__m128 vec;
@@ -70,6 +72,7 @@ typedef union mat4{
 } mat4;
 
 #ifdef __cplusplus
+}
 }
 #endif
 

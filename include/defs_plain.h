@@ -2,6 +2,7 @@
 #define GLMC_DEFS_PLAIN
 
 #ifdef __cplusplus
+namespace glmc{
 extern "C"{
 #endif
 
@@ -66,6 +67,7 @@ typedef union mat4{
 } mat4;
 
 #ifdef __cplusplus
+}
 }
 #endif
 

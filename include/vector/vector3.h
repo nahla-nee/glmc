@@ -4,6 +4,10 @@
 #include "../defs.h"
 #include "vector.h"
 
+#include <stdbool.h>
+#include <math.h>
+#include <float.h>
+
 #define vec3_set1(x) vec_set1(x)
 #define vec3_add(a, b) vec_add(a, b)
 #define vec3_sub(a, b) vec_sub(a, b)
@@ -19,13 +23,9 @@
 #define vec3_round(a) vec_round(a)
 
 #ifdef __cplusplus
+namespace glmc{
 extern "C"{
 #endif
-
-#include <stdbool.h>
-#include <math.h>
-#include <float.h>
-#include <smmintrin.h>
 
 bool vec3_equal(__m128 a, __m128 b);
 bool vec3_equal_eps(__m128 a, __m128 b, float epsilon);
@@ -37,6 +37,7 @@ __m128 vec3_set(float x, float y, float z);
 __m128 vec3_mulMat(__m128 a, mat3 b);
 
 #ifdef __cplusplus
+}
 }
 #endif
 

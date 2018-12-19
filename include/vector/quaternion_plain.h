@@ -2,14 +2,14 @@
 #define GLMC_QUAT_PLAIN
 
 #include "../defs_plain.h"
-
-#ifdef __cplusplus
-extern "C"{
-#endif
-
 #include <stdbool.h>
 #include <math.h>
 #include <float.h>
+
+#ifdef __cplusplus
+namespace glmc{
+extern "C"{
+#endif
 
 quat quat_set1(float x);
 quat quat_add(quat a, quat b);
@@ -36,6 +36,7 @@ quat quat_div(quat a, quat b);
 quat quat_rotation(float angle, float x, float y, float z);
 
 #ifdef __cplusplus
+}
 }
 #endif
 

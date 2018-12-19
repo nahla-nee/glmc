@@ -4,6 +4,7 @@
 #include "../defs_plain.h"
 
 #ifdef __cplusplus
+namespace glmc{
 extern "C"{
 #endif
 
@@ -24,6 +25,7 @@ mat3 mat3_swapRow(mat3 a, int R1, int R2);
 mat3 mat3_swapCol(mat3 a, int C1, int C2);
 
 #ifdef __cplusplus
+}
 }
 #endif
 
