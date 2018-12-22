@@ -175,6 +175,65 @@ mat4 mat4_transpose(mat4 a){
 		a.m14, a.m24, a.m34, a.m44};
 	return res;
 }
+mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
+	mat4 res;
+
+	float nx2 = near*2;
+	float FminN = far - near;
+	float RminL = right - left;
+	float TminB = top - bottom;
+
+	res.mat[0] = nx2/(RminL);
+	res.mat[1] = 0.f;
+	res.mat[2] = 0.f;
+	res.mat[3] = 0.f;
+
+	res.mat[4] = 0.f;
+	res.mat[5] = nx2/(TminB);
+	res.mat[6] = 0.f;
+	res.mat[7] = 0.f;
+
+	res.mat[8] = (right+left)/(RminL);
+	res.mat[9] = (top+bottom)/(TminB);
+	res.mat[10] = (-(far+near))/FminN;
+	res.mat[11] = -1.f;
+
+	res.mat[12] = 0.f;
+	res.mat[13] = 0.f;
+	res.mat[14] = (-nx2*far)/FminN;
+	res.mat[15] = 0.f;
+
+	return res;
+}
+mat4 mat4_ortho(float left, float right, float top, float bottom, float near, float far){
+	mat4 res;
+
+	float FminN = far - near;
+	float RminL = right - left;
+	float TminB = top - bottom;
+
+	res.mat[0] = 2.f/(RminL);
+	res.mat[1] = 0.f;
+	res.mat[2] = 0.f;
+	res.mat[3] = 0.f;
+
+	res.mat[4] = 0.f;
+	res.mat[5] = 2.f/(TminB);
+	res.mat[6] = 0.f;
+	res.mat[7] = 0.f;
+
+	res.mat[8] = 0.f;
+	res.mat[9] = 0.f;
+	res.mat[10] = 2.f/FminN;
+	res.mat[11] = 0.f;
+
+	res.mat[12] = -((right+left)/RminL);
+	res.mat[13] = -((top+bottom)/TminB);
+	res.mat[14] = -((far+near)/FminN);
+	res.mat[15] = 1.f;
+
+	return res;
+}
 mat4 mat4_swapRow(mat4 a, int R1, int R2){
 	float tmp[4] = {a.mat2D[0][R1], a.mat2D[1][R1], a.mat2D[2][R1], a.mat2D[3][R1]};
 

@@ -115,6 +115,36 @@ mat4 mat4_transpose(mat4 a){
 	_MM_TRANSPOSE4_PS(a.mat[0], a.mat[1], a.mat[2], a.mat[3]);
 	return a;
 }
+mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
+	mat4 res;
+
+	//used multiple times, useless to calculate them more than once
+	float nx2 = near*2;
+	float FminN = far - near;
+	float RminL = right - left;
+	float TminB = top - bottom;
+
+	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, nx2/RminL);
+	res.mat[1] = _mm_set_ps(0.f, 0.f, nx2/TminB, 0.f);
+	res.mat[2] = _mm_set_ps(-1.0f, (-(far+near))/FminN, (top+bottom)/TminB, (right+left)/RminL);
+	res.mat[3] = _mm_set_ps(0.f, (-nx2*far)/FminN, 0.f, 0.f);
+
+	return res;
+}
+mat4 mat4_ortho(float left, float right, float top, float bottom, float near, float far){
+	mat4 res;
+
+	float FminN = far - near;
+	float RminL = right - left;
+	float TminB = top - bottom;
+
+	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, 2.f/RminL);
+	res.mat[1] = _mm_set_ps(0.f, 0.f, 2.f/TminB, 0.f);
+	res.mat[2] = _mm_set_ps(0.0f, -2.f/FminN, 0.f, 0.f);
+	res.mat[3] = _mm_set_ps(1.f, -((far+near)/FminN), -((top+bottom)/(TminB)), -((right+left)/(RminL)));
+
+	return res;
+}
 mat4 mat4_swapRow(mat4 a, int R1, int R2){
 	vec4 tmp = (vec4)_mm_set_ps(a.mat[3][R1], a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]);
 	a.mat2D[3][R1] = a.mat2D[3][R2];
