@@ -175,6 +175,22 @@ mat4 mat4_transpose(mat4 a){
 		a.m14, a.m24, a.m34, a.m44};
 	return res;
 }
+mat4 mat4_model(float x, float y, float z, float scale){
+	mat4 res;
+
+	res.mat[0] = x;
+	res.mat[1] = res.mat[2] = res.mat[3] = 0.f;
+
+	res.mat[5] = y;
+	res.mat[4] = res.mat[6] = res.mat[7] = 0.f;
+
+	res.mat[10] = z;
+	res.mat[8] = res.mat[9] = res.mat[11] = 0.f;
+
+	res.mat[12] = res.mat[13] = res.mat[14] = scale;
+	res.mat[15] = 1.f;
+	return res;
+}
 mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
 	mat4 res;
 

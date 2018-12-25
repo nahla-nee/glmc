@@ -115,6 +115,15 @@ mat4 mat4_transpose(mat4 a){
 	_MM_TRANSPOSE4_PS(a.mat[0], a.mat[1], a.mat[2], a.mat[3]);
 	return a;
 }
+mat4 mat4_model(float x, float y, float z, float scale){
+	mat4 res;
+
+	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, x);
+	res.mat[1] = _mm_set_ps(0.f, 0.f, y, 0.f);
+	res.mat[2] = _mm_set_ps(0.f, z, 0.f, 0.f);
+	res.mat[3] = _mm_set_ps(1.f, scale, scale, scale);
+	return res;
+}
 mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
 	mat4 res;
 
