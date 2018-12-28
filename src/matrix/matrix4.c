@@ -34,24 +34,24 @@ mat4 mat4_sub(mat4 a, mat4 b){
 mat4 mat4_mul(mat4 a, mat4 b){
 	mat4 res;
 	__m128 t = _mm_mul_ps(a.mat[0], _mm_set1_ps(b.mat[0][0]));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2D[0][1])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2D[0][2])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2D[0][3])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2d[0][1])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2d[0][2])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2d[0][3])));
 	res.mat[0] = t;
 	t = _mm_mul_ps(a.mat[0], _mm_set1_ps(b.mat[1][0]));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2D[1][1])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2D[1][2])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2D[1][3])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2d[1][1])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2d[1][2])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2d[1][3])));
 	res.mat[1] = t;
 	t = _mm_mul_ps(a.mat[0], _mm_set1_ps(b.mat[2][0]));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2D[2][1])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2D[2][2])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2D[2][3])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2d[2][1])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2d[2][2])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2d[2][3])));
 	res.mat[2] = t;
 	t = _mm_mul_ps(a.mat[0], _mm_set1_ps(b.mat[3][0]));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2D[3][1])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2D[3][2])));
-	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2D[3][3])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[1], _mm_set1_ps(b.mat2d[3][1])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[2], _mm_set1_ps(b.mat2d[3][2])));
+	t = _mm_add_ps(t, _mm_mul_ps(a.mat[3], _mm_set1_ps(b.mat2d[3][3])));
 	res.mat[3] = t;
 	return res;
 }
@@ -115,13 +115,22 @@ mat4 mat4_transpose(mat4 a){
 	_MM_TRANSPOSE4_PS(a.mat[0], a.mat[1], a.mat[2], a.mat[3]);
 	return a;
 }
-mat4 mat4_model(float x, float y, float z, float scale){
+mat4 mat4_model1(float x, float y, float z, float scale){
 	mat4 res;
 
-	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, x);
-	res.mat[1] = _mm_set_ps(0.f, 0.f, y, 0.f);
-	res.mat[2] = _mm_set_ps(0.f, z, 0.f, 0.f);
-	res.mat[3] = _mm_set_ps(1.f, scale, scale, scale);
+	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, scale);
+	res.mat[1] = _mm_set_ps(0.f, 0.f, scale, 0.f);
+	res.mat[2] = _mm_set_ps(0.f, scale, 0.f, 0.f);
+	res.mat[3] = _mm_set_ps(1.f, z, y, x);
+	return res;
+}
+mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zscale){
+	mat4 res;
+
+	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, xscale);
+	res.mat[1] = _mm_set_ps(0.f, 0.f, yscale, 0.f);
+	res.mat[2] = _mm_set_ps(0.f, zscale, 0.f, 0.f);
+	res.mat[3] = _mm_set_ps(1.f, z, y, x);
 	return res;
 }
 mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
@@ -156,15 +165,15 @@ mat4 mat4_ortho(float left, float right, float top, float bottom, float near, fl
 }
 mat4 mat4_swapRow(mat4 a, int R1, int R2){
 	vec4 tmp = (vec4)_mm_set_ps(a.mat[3][R1], a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]);
-	a.mat2D[3][R1] = a.mat2D[3][R2];
-	a.mat2D[2][R1] = a.mat2D[2][R2];
-	a.mat2D[1][R1] = a.mat2D[1][R2];
-	a.mat2D[0][R1] = a.mat2D[0][R2];
+	a.mat2d[3][R1] = a.mat2d[3][R2];
+	a.mat2d[2][R1] = a.mat2d[2][R2];
+	a.mat2d[1][R1] = a.mat2d[1][R2];
+	a.mat2d[0][R1] = a.mat2d[0][R2];
 
-	a.mat2D[3][R2] = tmp.w;
-	a.mat2D[2][R2] = tmp.z;
-	a.mat2D[1][R2] = tmp.y;
-	a.mat2D[0][R2] = tmp.x;
+	a.mat2d[3][R2] = tmp.w;
+	a.mat2d[2][R2] = tmp.z;
+	a.mat2d[1][R2] = tmp.y;
+	a.mat2d[0][R2] = tmp.x;
 	return a;
 }
 mat4 mat4_swapCol(mat4 a, int C1, int C2){

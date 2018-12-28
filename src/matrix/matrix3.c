@@ -29,17 +29,17 @@ mat3 mat3_sub(mat3 a, mat3 b){
 mat3 mat3_mul(mat3 a, mat3 b){
 	mat3 res;
 
-	res.mat1D[0] = a.m0*b.m0+a.m3*b.m1+a.m6*b.m2;
-	res.mat1D[1] = a.m1*b.m0+a.m4*b.m1+a.m7*b.m2;
-	res.mat1D[2] = a.m2*b.m0+a.m5*b.m1+a.m8*b.m2;
+	res.mat1d[0] = a.m0*b.m0+a.m3*b.m1+a.m6*b.m2;
+	res.mat1d[1] = a.m1*b.m0+a.m4*b.m1+a.m7*b.m2;
+	res.mat1d[2] = a.m2*b.m0+a.m5*b.m1+a.m8*b.m2;
 
-	res.mat1D[3] = a.m0*b.m3+a.m3*b.m4+a.m6*b.m5;
-	res.mat1D[4] = a.m1*b.m3+a.m4*b.m4+a.m7*b.m5;
-	res.mat1D[5] = a.m2*b.m3+a.m5*b.m4+a.m8*b.m5;
+	res.mat1d[3] = a.m0*b.m3+a.m3*b.m4+a.m6*b.m5;
+	res.mat1d[4] = a.m1*b.m3+a.m4*b.m4+a.m7*b.m5;
+	res.mat1d[5] = a.m2*b.m3+a.m5*b.m4+a.m8*b.m5;
 
-	res.mat1D[6] = a.m0*b.m6+a.m3*b.m7+a.m6*b.m8;
-	res.mat1D[7] = a.m1*b.m6+a.m4*b.m7+a.m7*b.m8;
-	res.mat1D[8] = a.m2*b.m6+a.m5*b.m7+a.m8*b.m8;
+	res.mat1d[6] = a.m0*b.m6+a.m3*b.m7+a.m6*b.m8;
+	res.mat1d[7] = a.m1*b.m6+a.m4*b.m7+a.m7*b.m8;
+	res.mat1d[8] = a.m2*b.m6+a.m5*b.m7+a.m8*b.m8;
 
 	return res;
 }
@@ -99,27 +99,27 @@ mat3 mat3_transpose(mat3 a){
 	return a;
 }
 mat3 mat3_swapRow(mat3 a, int R1, int R2){
-	float tmp[3] = {a.mat2D[0][R1], a.mat2D[1][R1], a.mat2D[2][R1]};
+	float tmp[3] = {a.mat2d[0][R1], a.mat2d[1][R1], a.mat2d[2][R1]};
 
-	a.mat2D[0][R1] = a.mat2D[0][R2];
-	a.mat2D[1][R1] = a.mat2D[1][R2];
-	a.mat2D[2][R1] = a.mat2D[2][R2];
+	a.mat2d[0][R1] = a.mat2d[0][R2];
+	a.mat2d[1][R1] = a.mat2d[1][R2];
+	a.mat2d[2][R1] = a.mat2d[2][R2];
 
-	a.mat2D[0][R2] = tmp[0];
-	a.mat2D[1][R2] = tmp[1];
-	a.mat2D[2][R2] = tmp[2];
+	a.mat2d[0][R2] = tmp[0];
+	a.mat2d[1][R2] = tmp[1];
+	a.mat2d[2][R2] = tmp[2];
 	
 	return a;
 }
 mat3 mat3_swapCol(mat3 a, int C1, int C2){
-	float tmp[3] = {a.mat2D[C1][0], a.mat2D[C1][1], a.mat2D[C1][2]};
+	float tmp[3] = {a.mat2d[C1][0], a.mat2d[C1][1], a.mat2d[C1][2]};
 
-	a.mat2D[C1][0] = a.mat2D[C2][0];
-	a.mat2D[C1][1] = a.mat2D[C2][1];
-	a.mat2D[C1][2] = a.mat2D[C2][2];
+	a.mat2d[C1][0] = a.mat2d[C2][0];
+	a.mat2d[C1][1] = a.mat2d[C2][1];
+	a.mat2d[C1][2] = a.mat2d[C2][2];
 
-	a.mat2D[C2][0] = tmp[0];
-	a.mat2D[C2][1] = tmp[1];
-	a.mat2D[C2][2] = tmp[2];
+	a.mat2d[C2][0] = tmp[0];
+	a.mat2d[C2][1] = tmp[1];
+	a.mat2d[C2][2] = tmp[2];
 	return a;
 }

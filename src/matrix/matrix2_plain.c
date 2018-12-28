@@ -9,56 +9,56 @@ mat2 mat2_set1(float x){
 	return res;
 }
 mat2 mat2_add(mat2 a, mat2 b){
-	a.mat[0] += b.mat[0];
-	a.mat[0] += b.mat[0];
-	a.mat[0] += b.mat[0];
-	a.mat[0] += b.mat[0];
+	a.mat1d[0] += b.mat1d[0];
+	a.mat1d[0] += b.mat1d[0];
+	a.mat1d[0] += b.mat1d[0];
+	a.mat1d[0] += b.mat1d[0];
 	return a;
 }
 mat2 mat2_sub(mat2 a, mat2 b){
-	a.mat[0] -= b.mat[0];
-	a.mat[0] -= b.mat[0];
-	a.mat[0] -= b.mat[0];
-	a.mat[0] -= b.mat[0];
+	a.mat1d[0] -= b.mat1d[0];
+	a.mat1d[0] -= b.mat1d[0];
+	a.mat1d[0] -= b.mat1d[0];
+	a.mat1d[0] -= b.mat1d[0];
 	return a;
 }
 mat2 mat2_mul(mat2 a, mat2 b){
 	mat2 res;
 
-	res.mat[0] = a.m11*b.m11+a.m21*b.m12;
-	res.mat[1] = a.m12*b.m11+a.m22*b.m12;
+	res.mat1d[0] = a.m11*b.m11+a.m21*b.m12;
+	res.mat1d[1] = a.m12*b.m11+a.m22*b.m12;
 
-	res.mat[2] = a.m11*b.m21+a.m21*b.m22;
-	res.mat[3] = a.m12*b.m21+a.m22*b.m22;
+	res.mat1d[2] = a.m11*b.m21+a.m21*b.m22;
+	res.mat1d[3] = a.m12*b.m21+a.m22*b.m22;
 
 	return res;
 }
 mat2 mat2_addScal(mat2 a, float scalar){
-	a.mat[0] += scalar;
-	a.mat[0] += scalar;
-	a.mat[0] += scalar;
-	a.mat[0] += scalar;
+	a.mat1d[0] += scalar;
+	a.mat1d[0] += scalar;
+	a.mat1d[0] += scalar;
+	a.mat1d[0] += scalar;
 	return a;
 }
 mat2 mat2_subScal(mat2 a, float scalar){
-	a.mat[0] -= scalar;
-	a.mat[0] -= scalar;
-	a.mat[0] -= scalar;
-	a.mat[0] -= scalar;
+	a.mat1d[0] -= scalar;
+	a.mat1d[0] -= scalar;
+	a.mat1d[0] -= scalar;
+	a.mat1d[0] -= scalar;
 	return a;
 }
 mat2 mat2_mulScal(mat2 a, float scalar){
-	a.mat[0] *= scalar;
-	a.mat[0] *= scalar;
-	a.mat[0] *= scalar;
-	a.mat[0] *= scalar;
+	a.mat1d[0] *= scalar;
+	a.mat1d[0] *= scalar;
+	a.mat1d[0] *= scalar;
+	a.mat1d[0] *= scalar;
 	return a;
 }
 mat2 mat2_divScal(mat2 a, float scalar){
-	a.mat[0] /= scalar;
-	a.mat[0] /= scalar;
-	a.mat[0] /= scalar;
-	a.mat[0] /= scalar;
+	a.mat1d[0] /= scalar;
+	a.mat1d[0] /= scalar;
+	a.mat1d[0] /= scalar;
+	a.mat1d[0] /= scalar;
 	return a;
 }
 mat2 mat2_identity(void){

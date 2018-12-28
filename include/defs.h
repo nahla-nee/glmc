@@ -45,8 +45,8 @@ typedef union quat{
 
 typedef union mat2{
 	__m128 mat;
-	float mat2D[2][2];
-	float mat1D[4];
+	float mat2d[2][2];
+	float mat1d[4];
 	struct{
 		float m0, m1, m2, m3;
 	};
@@ -55,8 +55,8 @@ typedef union mat2{
 //no need for using another sse, its just as fast to use a float
 typedef union mat3{
 	__m128 mat[2];
-	float mat2D[3][3];
-	float mat1D[9];
+	float mat2d[3][3];
+	float mat1d[9];
 	struct{
 		float m0, m1, m2, m3, m4, m5, m6, m7, m8;
 	};
@@ -64,8 +64,8 @@ typedef union mat3{
 
 typedef union mat4{
 	__m128 mat[4];
-	float mat2D[4][4];
-	float mat1D[16];
+	float mat2d[4][4];
+	float mat1d[16];
 	struct{
 		float m0, m1, m2, m3, m4, m5, m6, m7, m8, m9, m10, m11, m12, m13, m14, m15;
 	};
