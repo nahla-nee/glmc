@@ -209,8 +209,13 @@ mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zsc
 
 	return res;
 }
-mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
+mat4 mat4_projection(float fov, float aspect, float near, float far){
 	mat4 res;
+
+	float top = tan(fov/2)*near;
+	float bottom = -top;
+	float left = top*aspect;
+	float right = -left;
 
 	float nx2 = near*2;
 	float FminN = far - near;

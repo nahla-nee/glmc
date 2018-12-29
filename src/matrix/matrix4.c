@@ -133,8 +133,14 @@ mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zsc
 	res.mat[3] = _mm_set_ps(1.f, z, y, x);
 	return res;
 }
-mat4 mat4_projection(float left, float right, float top, float bottom, float near, float far){
+mat4 mat4_projection(float fov, float aspect, float near, float far){
 	mat4 res;
+
+	float top = tan(fov/2)*near;
+	float bottom = -top;
+	float left = top*aspect;
+	float right = -left;
+
 
 	//used multiple times, useless to calculate them more than once
 	float nx2 = near*2;
