@@ -209,7 +209,7 @@ mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zsc
 
 	return res;
 }
-mat4 mat4_projection(float fov, float aspect, float near, float far){
+mat4 mat4_perspective(float fov, float aspect, float near, float far){
 	mat4 res;
 
 	float top = tan(fov/2)*near;
