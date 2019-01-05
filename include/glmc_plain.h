@@ -12,4 +12,7 @@
 #include "matrix/matrix3_plain.h"
 #include "matrix/matrix4_plain.h"
 
+#define GLMC_DEG2RAD(DEG) (DEG*M_PI/180.f);
+#define GLMC_RAD2DEG(RAD) (RAD*180.f/M_PI);
+
 #endif /*GLMC_PLAIN_H*/

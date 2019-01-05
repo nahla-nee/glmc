@@ -14,4 +14,7 @@
 #include "matrix/matrix3.h"
 #include "matrix/matrix4.h"
 
+#define GLMC_DEG2RAD(DEG) (DEG*M_PI/180.f);
+#define GLMC_RAD2DEG(RAD) (RAD*180.f/M_PI);
+
 #endif /*GLMC_H*/
