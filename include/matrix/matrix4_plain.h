@@ -22,11 +22,12 @@ mat4 mat4_divScal(mat4 a, float scalar);
 mat4 mat4_identity(void);
 mat4 mat4_translate(float x, float y, float z);
 mat4 mat4_scale(float x, float y, float z);
-mat4 mat4_transpose(mat4 a);
+mat4 mat4_rotate(float xaxis, float yaxis, float zaxis, float theta);
 mat4 mat4_model1(float x, float y, float z, float scale);
 mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zscale);
 mat4 mat4_perspective(float fov, float aspect, float near, float far);
 mat4 mat4_ortho(float left, float right, float top, float bottom, float near, float far);
+mat4 mat4_transpose(mat4 a);
 mat4 mat4_swapRow(mat4 a, int R1, int R2);
 mat4 mat4_swapCol(mat4 a, int C1, int C2);
 

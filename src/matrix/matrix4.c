@@ -111,9 +111,30 @@ mat4 mat4_scale(float x, float y, float z){
 	res.mat[3] = _mm_set_ps(1.f, 0.f, 0.f, 0.f);
 	return res;
 }
-mat4 mat4_transpose(mat4 a){
-	_MM_TRANSPOSE4_PS(a.mat[0], a.mat[1], a.mat[2], a.mat[3]);
-	return a;
+mat4 mat4_rotate(float xaxis, float yaxis, float zaxis, float theta){
+	mat4 res;
+	float cosTheta = cos(theta);
+	float sinTheta = sin(theta);
+	float cosThetaMin = 1-cosTheta;
+
+	res.mat[0] = _mm_set_ps(0.f,
+		zaxis*xaxis*cosThetaMin-yaxis*sinTheta,
+		yaxis*xaxis*cosThetaMin+xaxis*sinTheta,
+		cosTheta+xaxis*xaxis*cosThetaMin);
+
+	res.mat[1] = _mm_set_ps(0.f,
+		zaxis*yaxis*cosThetaMin+xaxis*sinTheta,
+		cosTheta+yaxis*yaxis*cosThetaMin,
+		xaxis*yaxis*cosThetaMin-zaxis*sinTheta);
+
+	res.mat[2] = _mm_set_ps(0.f,
+		cosTheta+xaxis*xaxis*cosThetaMin,
+		yaxis*zaxis*cosThetaMin-xaxis*sinTheta,
+		xaxis*zaxis*cosThetaMin+yaxis*sinTheta);
+
+	res.mat[3] = _mm_set_ps(0.f, 0.f, 0.f, 1.f);
+
+	return res;
 }
 mat4 mat4_model1(float x, float y, float z, float scale){
 	mat4 res;
@@ -168,6 +189,10 @@ mat4 mat4_ortho(float left, float right, float top, float bottom, float near, fl
 	res.mat[3] = _mm_set_ps(1.f, -((far+near)/FminN), -((top+bottom)/(TminB)), -((right+left)/(RminL)));
 
 	return res;
+}
+mat4 mat4_transpose(mat4 a){
+	_MM_TRANSPOSE4_PS(a.mat[0], a.mat[1], a.mat[2], a.mat[3]);
+	return a;
 }
 mat4 mat4_swapRow(mat4 a, int R1, int R2){
 	vec4 tmp = (vec4)_mm_set_ps(a.mat[3][R1], a.mat[2][R1], a.mat[1][R1], a.mat[0][R1]);

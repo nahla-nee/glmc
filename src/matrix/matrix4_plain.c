@@ -167,14 +167,6 @@ mat4 mat4_scale(float x, float y, float z){
 		0.0f, 0.0f, 0.0f, 1.f};
 	return a;
 }
-mat4 mat4_transpose(mat4 a){
-	//way faster to just use another matrix instead of a bunch of subtitutions
-	mat4 res = {a.m11, a.m21, a.m31, a.m41,
-		a.m12, a.m22, a.m32, a.m42,
-		a.m13, a.m23, a.m33, a.m34,
-		a.m14, a.m24, a.m34, a.m44};
-	return res;
-}
 mat4 mat4_model1(float x, float y, float z, float scale){
 	mat4 res;
 
@@ -206,6 +198,34 @@ mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zsc
 	res.mat2d[0][1] = res.mat2d[0][2] = res.mat2d[0][3] = 0.f;
 	res.mat2d[1][0] = res.mat2d[1][2] = res.mat2d[1][3] = 0.f;
 	res.mat2d[2][0] = res.mat2d[2][1] = res.mat2d[2][2] = 0.f;
+
+	return res;
+}
+mat4 mat4_rotate(float xaxis, float yaxis, float zaxis, float theta){
+	mat4 res;
+	float cosTheta = cos(theta);
+	float sinTheta = sin(theta);
+	float cosThetaMin = 1-cosTheta;
+
+	res.mat2d[0][0] = cosTheta+xaxis*xaxis*cosThetaMin;
+	res.mat2d[0][1] = yaxis*xaxis*cosThetaMin+xaxis*sinTheta,
+	res.mat2d[0][2] = zaxis*xaxis*cosThetaMin-yaxis*sinTheta,
+	res.mat2d[0][3] = 0.f;
+
+	res.mat2d[1][0] = xaxis*yaxis*cosThetaMin-zaxis*sinTheta;
+	res.mat2d[1][1] = cosTheta+yaxis*yaxis*cosThetaMin;
+	res.mat2d[1][2] = zaxis*yaxis*cosThetaMin+xaxis*sinTheta;
+	res.mat2d[1][3] = 0.f;
+
+	res.mat2d[2][0] = xaxis*zaxis*cosThetaMin+yaxis*sinTheta;
+	res.mat2d[2][1] = yaxis*zaxis*cosThetaMin-xaxis*sinTheta;
+	res.mat2d[2][2] = cosTheta+xaxis*xaxis*cosThetaMin;
+	res.mat2d[2][3] = 0.f;
+
+	res.mat2d[3][0] = 0.f;
+	res.mat2d[3][1] = 0.f;
+	res.mat2d[3][2] = 0.f;
+	res.mat2d[3][3] = 1.f;
 
 	return res;
 }
@@ -271,6 +291,14 @@ mat4 mat4_ortho(float left, float right, float top, float bottom, float near, fl
 	res.mat1d[14] = -((far+near)/FminN);
 	res.mat1d[15] = 1.f;
 
+	return res;
+}
+mat4 mat4_transpose(mat4 a){
+	//way faster to just use another matrix instead of a bunch of subtitutions
+	mat4 res = {a.m11, a.m21, a.m31, a.m41,
+		a.m12, a.m22, a.m32, a.m42,
+		a.m13, a.m23, a.m33, a.m34,
+		a.m14, a.m24, a.m34, a.m44};
 	return res;
 }
 mat4 mat4_swapRow(mat4 a, int R1, int R2){
