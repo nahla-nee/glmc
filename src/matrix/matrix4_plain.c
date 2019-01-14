@@ -167,7 +167,7 @@ mat4 mat4_scale(float x, float y, float z){
 		0.0f, 0.0f, 0.0f, 1.f};
 	return a;
 }
-mat4 mat4_model1(float x, float y, float z, float scale){
+mat4 mat4_transScale1(float x, float y, float z, float scale){
 	mat4 res;
 
 	res.mat2d[0][0] = res.mat2d[1][1] = res.mat2d[2][2] = scale;
@@ -183,7 +183,7 @@ mat4 mat4_model1(float x, float y, float z, float scale){
 
 	return res;
 }
-mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zscale){
+mat4 mat4_transScale(float x, float y, float z, float xscale, float yscale, float zscale){
 	mat4 res;
 
 	res.mat2d[0][0] = xscale;

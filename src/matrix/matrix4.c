@@ -111,7 +111,7 @@ mat4 mat4_scale(float x, float y, float z){
 	res.mat[3] = _mm_set_ps(1.f, 0.f, 0.f, 0.f);
 	return res;
 }
-mat4 mat4_model1(float x, float y, float z, float scale){
+mat4 mat4_transScale1(float x, float y, float z, float scale){
 	mat4 res;
 
 	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, scale);
@@ -120,7 +120,7 @@ mat4 mat4_model1(float x, float y, float z, float scale){
 	res.mat[3] = _mm_set_ps(1.f, z, y, x);
 	return res;
 }
-mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zscale){
+mat4 mat4_transScale(float x, float y, float z, float xscale, float yscale, float zscale){
 	mat4 res;
 
 	res.mat[0] = _mm_set_ps(0.f, 0.f, 0.f, xscale);
