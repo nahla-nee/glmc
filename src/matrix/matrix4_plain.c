@@ -201,34 +201,6 @@ mat4 mat4_model(float x, float y, float z, float xscale, float yscale, float zsc
 
 	return res;
 }
-mat4 mat4_rotate(float xaxis, float yaxis, float zaxis, float theta){
-	mat4 res;
-	float cosTheta = cos(theta);
-	float sinTheta = sin(theta);
-	float cosThetaMin = 1-cosTheta;
-
-	res.mat2d[0][0] = cosTheta+xaxis*xaxis*cosThetaMin;
-	res.mat2d[0][1] = yaxis*xaxis*cosThetaMin+xaxis*sinTheta,
-	res.mat2d[0][2] = zaxis*xaxis*cosThetaMin-yaxis*sinTheta,
-	res.mat2d[0][3] = 0.f;
-
-	res.mat2d[1][0] = xaxis*yaxis*cosThetaMin-zaxis*sinTheta;
-	res.mat2d[1][1] = cosTheta+yaxis*yaxis*cosThetaMin;
-	res.mat2d[1][2] = zaxis*yaxis*cosThetaMin+xaxis*sinTheta;
-	res.mat2d[1][3] = 0.f;
-
-	res.mat2d[2][0] = xaxis*zaxis*cosThetaMin+yaxis*sinTheta;
-	res.mat2d[2][1] = yaxis*zaxis*cosThetaMin-xaxis*sinTheta;
-	res.mat2d[2][2] = cosTheta+xaxis*xaxis*cosThetaMin;
-	res.mat2d[2][3] = 0.f;
-
-	res.mat2d[3][0] = 0.f;
-	res.mat2d[3][1] = 0.f;
-	res.mat2d[3][2] = 0.f;
-	res.mat2d[3][3] = 1.f;
-
-	return res;
-}
 mat4 mat4_perspective(float fov, float aspect, float near, float far){
 	mat4 res;
 

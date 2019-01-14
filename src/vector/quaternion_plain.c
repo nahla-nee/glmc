@@ -199,8 +199,36 @@ quat quat_div(quat a, quat b){
 	res.z+=cross.z;
 	return res;
 }
-
 quat quat_rotation(float angle, float x, float y, float z){
 	quat res = {1.0f*cosf(angle), x*sin(angle), y*sin(angle), z*sin(angle)};
+	return res;
+}
+mat4 quat_toMat(quat a){
+	mat4 res;
+	float x = ((quat)a).x;
+	float y = ((quat)a).y;
+	float z = ((quat)a).z;
+	float w = ((quat)a).w;
+
+	res.mat1d[0] = 1.f - 2.f*a.y*a.y - 2.f*a.z*a.z;
+	res.mat1d[1] = 2.f*a.x*a.y - 2.f*a.z*a.w;
+	res.mat1d[2] = 2.f*a.x*a.z + 2.f*a.y*a.w;
+	res.mat1d[3] = 0.f;
+
+	res.mat1d[4] = 2.f*a.x*a.y + 2.f*a.z*a.w;
+	res.mat1d[5] = 1.f - 2.f*a.x*a.x - 2.f*a.z*a.z;
+	res.mat1d[6] = 2.f*a.y*a.z - 2.f*a.x*a.w;
+	res.mat1d[7] = 0.f;
+
+	res.mat1d[8] = 2.f*a.x*a.z - 2.f*a.y*a.w;
+	res.mat1d[9] = 2.f*a.y*a.z + 2.f*a.x*a.w;
+	res.mat1d[10] = 1.f - 2.f*a.x*a.x - 2.f*a.y*a.y;
+	res.mat1d[11] = 0.f;
+
+	res.mat1d[12] = 0.f;
+	res.mat1d[13] = 0.f;
+	res.mat1d[14] = 0.f;
+	res.mat1d[15] = 1.f;
+
 	return res;
 }

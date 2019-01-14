@@ -121,9 +121,32 @@ __m128 quat_div(__m128 a, __m128 b){
 }
 
 __m128 quat_rotation(float angle, float x, float y, float z){
-	__m128 res = _mm_set_ps(1.0f, z, y, x);
-	float s = sin(angle);
-	float c = cos(angle);
-	res = _mm_mul_ps(res, _mm_set_ps(c, s, s, s));
+	__m128 res = _mm_set_ps(1.f, z, y, x);
+	float angleSin = sin(angle);
+	float angleCos = cos(angle);
+	res = _mm_mul_ps(res, _mm_set_ps(angleCos, angleSin, angleSin, angleSin));
+	return res;
+}
+mat4 quat_toMat(__m128 a){
+	mat4 res;
+	float x = ((quat)a).x;
+	float y = ((quat)a).y;
+	float z = ((quat)a).z;
+	float w = ((quat)a).w;
+
+	res.mat[0] = _mm_setr_ps(1.f - 2.f*y*y - 2.f*z*z,
+		2.f*x*y - 2.f*z*w,
+		2.f*x*z + 2.f*y*w,
+		0.f);
+	res.mat[1] = _mm_setr_ps(2.f*x*y + 2.f*z*w,
+		1.f - 2.f*x*x - 2.f*z*z,
+		2.f*y*z - 2.f*x*w,
+		0.f);
+	res.mat[2] = _mm_setr_ps(2.f*x*z - 2.f*y*w,
+		2.f*y*z + 2.f*x*w,
+		1.f - 2.f*x*x - 2.f*y*y,
+		0.f);
+	res.mat[3] = _mm_setr_ps(0.f, 0.f, 0.f, 1.f);
+
 	return res;
 }

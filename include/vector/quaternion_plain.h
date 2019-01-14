@@ -34,6 +34,7 @@ quat quat_mulReal(quat a, quat b);
 quat quat_mulPure(quat a, quat b);
 quat quat_div(quat a, quat b);
 quat quat_rotation(float angle, float x, float y, float z);
+mat4 quat_toMat(quat a);
 
 #ifdef __cplusplus
 }
