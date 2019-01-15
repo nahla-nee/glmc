@@ -2,6 +2,8 @@
 #define GLMC_MATRIX4
 
 #include "../defs.h"
+#include "../vector/vector4.h"
+#include "../vector/vector3.h"
 #include <math.h>
 
 #ifdef __cplusplus
@@ -26,6 +28,7 @@ mat4 mat4_transScale1(float x, float y, float z, float scale);
 mat4 mat4_transScale(float x, float y, float z, float xscale, float yscale, float zscale);
 mat4 mat4_perspective(float fov, float aspect, float near, float far);
 mat4 mat4_ortho(float left, float right, float top, float bottom, float near, float far);
+mat4 mat4_lookAt(__m128 position, __m128 target, __m128 up);
 mat4 mat4_transpose(mat4 a);
 mat4 mat4_swapRow(mat4 a, int R1, int R2);
 mat4 mat4_swapCol(mat4 a, int C1, int C2);

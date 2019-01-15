@@ -265,6 +265,38 @@ mat4 mat4_ortho(float left, float right, float top, float bottom, float near, fl
 
 	return res;
 }
+mat4 mat4_lookAt(vec3 position, vec3 target, vec3 up){
+	vec3 forward = vec3_norm(vec3_sub(position, target));
+	vec3 right = vec3_norm(vec3_cross(up, forward));
+	vec3 realUp = vec3_norm(vec3_cross(right, forward));
+
+	float dotX = -vec3_dot(right, position);
+	float dotY = -vec3_dot(realUp, position);
+	float dotZ = -vec3_dot(forward, position);
+
+	mat4 res;
+	res.mat2d[0][0] = right.x;
+	res.mat2d[0][1] = up.x;
+	res.mat2d[0][2] = forward.x;
+	res.mat2d[0][3] = 0.f;
+
+	res.mat2d[1][0] = right.y;
+	res.mat2d[1][1] = up.y;
+	res.mat2d[1][2] = forward.y;
+	res.mat2d[1][3] = 0.f;
+
+	res.mat2d[2][0] = right.z;
+	res.mat2d[2][1] = up.z;
+	res.mat2d[2][2] = forward.z;
+	res.mat2d[2][3] = 0.f;
+
+	res.mat2d[3][0] = dotX;
+	res.mat2d[3][1] = dotY;
+	res.mat2d[3][2] = dotZ;
+	res.mat2d[3][3] = 1.f;
+
+	return res;
+}
 mat4 mat4_transpose(mat4 a){
 	//way faster to just use another matrix instead of a bunch of subtitutions
 	mat4 res = {a.m11, a.m21, a.m31, a.m41,

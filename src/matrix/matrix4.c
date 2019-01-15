@@ -137,7 +137,6 @@ mat4 mat4_perspective(float fov, float aspect, float near, float far){
 	float left = top*aspect;
 	float right = -left;
 
-
 	//used multiple times, useless to calculate them more than once
 	float nx2 = near*2;
 	float FminN = far - near;
@@ -163,6 +162,23 @@ mat4 mat4_ortho(float left, float right, float top, float bottom, float near, fl
 	res.mat[2] = _mm_set_ps(0.0f, -2.f/FminN, 0.f, 0.f);
 	res.mat[3] = _mm_set_ps(1.f, -((far+near)/FminN), -((top+bottom)/(TminB)), -((right+left)/(RminL)));
 
+	return res;
+}
+mat4 mat4_lookAt(__m128 position, __m128 target, __m128 up){
+	__m128 forward = vec3_norm(vec3_sub(position, target));
+	__m128 right = vec3_norm(vec3_cross(up, forward));
+	__m128 realUp = vec3_norm(vec3_cross(right, forward));
+
+	float dotX = -vec3_dot(right, position);
+	float dotY = -vec3_dot(realUp, position);
+	float dotZ = -vec3_dot(forward, position);
+
+	mat4 res;
+	res.mat[0] = right;
+	res.mat[1] = realUp;
+	res.mat[2] = forward;
+	_MM_TRANSPOSE4_PS(res.mat[0], res.mat[1], res.mat[2], res.mat[3]);
+	res.mat[3] = _mm_setr_ps(dotX, dotY, dotZ, 1.f);
 	return res;
 }
 mat4 mat4_transpose(mat4 a){
