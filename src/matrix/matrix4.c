@@ -181,7 +181,7 @@ mat4 mat4_lookAt(__m128 position, __m128 target, __m128 up){
 	res.mat[3] = _mm_setr_ps(dotX, dotY, dotZ, 1.f);
 	return res;
 }
-mat4 mat4_lookAtFast(__m128 position, __m128 forward, __m128 target, __m128 up, __m128 right){
+mat4 mat4_lookAtFast(__m128 position, __m128 forward, __m128 up, __m128 right){
 	float dotX = -vec3_dot(right, position);
 	float dotY = -vec3_dot(up, position);
 	float dotZ = -vec3_dot(forward, position);

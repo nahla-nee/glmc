@@ -30,7 +30,7 @@ mat4 mat4_transScale(float x, float y, float z, float xscale, float yscale, floa
 mat4 mat4_perspective(float fov, float aspect, float near, float far);
 mat4 mat4_ortho(float left, float right, float top, float bottom, float near, float far);
 mat4 mat4_lookAt(vec3 position, vec3 target, vec3 up);
-mat4 mat4_lookAtFast(vec3 position, vec3 forward, vec3 target, vec3 up, vec3 right);
+mat4 mat4_lookAtFast(vec3 position, vec3 forward, vec3 up, vec3 right);
 mat4 mat4_transpose(mat4 a);
 mat4 mat4_swapRow(mat4 a, int R1, int R2);
 mat4 mat4_swapCol(mat4 a, int C1, int C2);

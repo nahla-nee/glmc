@@ -297,7 +297,7 @@ mat4 mat4_lookAt(vec3 position, vec3 target, vec3 up){
 
 	return res;
 }
-mat4 mat4_lookAtFast(vec3 position, vec3 forward, vec3 target, vec3 up, vec3 right){
+mat4 mat4_lookAtFast(vec3 position, vec3 forward, vec3 up, vec3 right){
 	float dotX = -vec3_dot(right, position);
 	float dotY = -vec3_dot(up, position);
 	float dotZ = -vec3_dot(forward, position);
