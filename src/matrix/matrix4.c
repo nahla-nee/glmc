@@ -181,6 +181,19 @@ mat4 mat4_lookAt(__m128 position, __m128 target, __m128 up){
 	res.mat[3] = _mm_setr_ps(dotX, dotY, dotZ, 1.f);
 	return res;
 }
+mat4 mat4_lookAtFast(__m128 position, __m128 forward, __m128 target, __m128 up, __m128 right){
+	float dotX = -vec3_dot(right, position);
+	float dotY = -vec3_dot(up, position);
+	float dotZ = -vec3_dot(forward, position);
+
+	mat4 res;
+	res.mat[0] = right;
+	res.mat[1] = up;
+	res.mat[2] = forward;
+	_MM_TRANSPOSE4_PS(res.mat[0], res.mat[1], res.mat[2], res.mat[3]);
+	res.mat[3] = _mm_setr_ps(dotX, dotY, dotZ, 1.f);
+	return res;
+}
 mat4 mat4_transpose(mat4 a){
 	_MM_TRANSPOSE4_PS(a.mat[0], a.mat[1], a.mat[2], a.mat[3]);
 	return a;

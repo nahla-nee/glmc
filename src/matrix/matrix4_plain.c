@@ -276,6 +276,34 @@ mat4 mat4_lookAt(vec3 position, vec3 target, vec3 up){
 
 	mat4 res;
 	res.mat2d[0][0] = right.x;
+	res.mat2d[0][1] = realUp.x;
+	res.mat2d[0][2] = forward.x;
+	res.mat2d[0][3] = 0.f;
+
+	res.mat2d[1][0] = right.y;
+	res.mat2d[1][1] = realUp.y;
+	res.mat2d[1][2] = forward.y;
+	res.mat2d[1][3] = 0.f;
+
+	res.mat2d[2][0] = right.z;
+	res.mat2d[2][1] = realUp.z;
+	res.mat2d[2][2] = forward.z;
+	res.mat2d[2][3] = 0.f;
+
+	res.mat2d[3][0] = dotX;
+	res.mat2d[3][1] = dotY;
+	res.mat2d[3][2] = dotZ;
+	res.mat2d[3][3] = 1.f;
+
+	return res;
+}
+mat4 mat4_lookAtFast(vec3 position, vec3 forward, vec3 target, vec3 up, vec3 right){
+	float dotX = -vec3_dot(right, position);
+	float dotY = -vec3_dot(up, position);
+	float dotZ = -vec3_dot(forward, position);
+
+	mat4 res;
+	res.mat2d[0][0] = right.x;
 	res.mat2d[0][1] = up.x;
 	res.mat2d[0][2] = forward.x;
 	res.mat2d[0][3] = 0.f;
