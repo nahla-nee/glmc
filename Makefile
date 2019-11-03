@@ -1,38 +1,32 @@
-FLAGS = -Iinclude/ -lm -std=c99 -c -O3
+FLAGS = -lm -std=c99 -c -O3
 
-MATSRC = src/matrix/matrix2.c src/matrix/matrix3.c src/matrix/matrix4.c
-VECSRC = src/vector/vector.c src/vector/vector2.c src/vector/vector3.c src/vector/vector4.c src/vector/quaternion.c
+MATSRC = simd/src/matrix/mat2.c simd/src/matrix/mat3.c simd/src/matrix/mat4.c
+VECSRC = simd/src/vector/vec.c simd/src/vector/vec2.c simd/src/vector/vec3.c simd/src/vector/vec4.c simd/src/vector/quat.c
 
-MATSRC_PLAIN = src/matrix/matrix2_plain.c src/matrix/matrix3_plain.c src/matrix/matrix4_plain.c
-VECSRC_PLAIN = src/vector/vector2_plain.c src/vector/vector3_plain.c src/vector/vector4_plain.c src/vector/quaternion_plain.c
+MATSRC_PLAIN = plain/src/matrix/mat2.c plain/src/matrix/mat3.c plain/src/matrix/mat4.c
+VECSRC_PLAIN = plain/src/vector/vec2.c plain/src/vector/vec3.c plain/src/vector/vec4.c plain/src/vector/quat.c
 
-MATINC = include/matrix/matrix2.h include/matrix/matrix3.h include/matrix/matrix4.h
-VECINC = include/vector/vector.h include/vector/vector2.h include/vector/vector3.h include/vector/vector4.h include/vector/quaternion.h
+MATINC = simd/include/matrix/
+VECINC = simd/include/vector/
 
-MATINC_PLAIN = include/matrix/matrix2_plain.h include/matrix/matrix3_plain.h include/matrix/matrix4_plain.h
-VECINC_PLAIN = include/vector/vector2_plain.h include/vector/vector3_plain.h include/vector/vector4_plain.h include/vector/quaternion_plain.h
+MATINC_PLAIN = plain/include/matrix/
+VECINC_PLAIN = plain/include/vector/
 
-sse:
-	cc $(FLAGS) -msse4.1 $(MATSRC) $(VECSRC)
+glmc-simd:
+	cc $(FLAGS) -Isimd/include -msse4.1 $(MATSRC) $(VECSRC)
 	ar rcs libglmc.a *.o
 
-	mkdir glmc
-	mkdir glmc/matrix glmc/vector
-	cp include/defs.h include/glmc.h glmc/
-	cp $(MATINC) glmc/matrix
-	cp $(VECINC) glmc/vector
-	mv libglmc.a glmc
+	mkdir glmc-simd
+	cp $(MATINC) $(VECINC) glmc-simd -r
+	mv libglmc.a glmc-simd/libglmc.a
 
-plain:
-	cc $(FLAGS) $(MATSRC_PLAIN) $(VECSRC_PLAIN)
+glmc-plain:
+	cc $(FLAGS) -Iplain/include $(MATSRC_PLAIN) $(VECSRC_PLAIN)
 	ar rcs libglmc.a *.o
 
-	mkdir glmc
-	mkdir glmc/matrix glmc/vector
-	cp include/defs_plain.h include/glmc_plain.h glmc/
-	cp $(MATINC_PLAIN) glmc/matrix
-	cp $(VECINC_PLAIN) glmc/vector
-	mv libglmc.a glmc
+	mkdir glmc-plain
+	cp $(MATINC_PLAIN) $(VECINC_PLAIN) glmc-plain -r
+	mv libglmc.a glmc-plain/libglmc.a
 
 .PHONY: clean
 clean:
