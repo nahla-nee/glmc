@@ -24,7 +24,6 @@ mat2 mat2_transpose(mat2 a);
 mat2 mat2_swapRow(mat2 a);
 mat2 mat2_swapCol(mat2 a);
 
-
 #ifdef __cplusplus
 }
 }
