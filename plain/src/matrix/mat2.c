@@ -9,56 +9,56 @@ mat2 mat2_set1(float x){
 	return res;
 }
 mat2 mat2_add(mat2 a, mat2 b){
-	a.mat1d[0] += b.mat1d[0];
-	a.mat1d[0] += b.mat1d[0];
-	a.mat1d[0] += b.mat1d[0];
-	a.mat1d[0] += b.mat1d[0];
+	a.m0 += b.m0;
+	a.m1 += b.m1;
+	a.m2 += b.m2;
+	a.m3 += b.m3;
 	return a;
 }
 mat2 mat2_sub(mat2 a, mat2 b){
-	a.mat1d[0] -= b.mat1d[0];
-	a.mat1d[0] -= b.mat1d[0];
-	a.mat1d[0] -= b.mat1d[0];
-	a.mat1d[0] -= b.mat1d[0];
+	a.m0 -= b.m0;
+	a.m1 -= b.m1;
+	a.m2 -= b.m2;
+	a.m3 -= b.m3;
 	return a;
 }
 mat2 mat2_mul(mat2 a, mat2 b){
 	mat2 res;
 
-	res.mat1d[0] = a.m11*b.m11+a.m21*b.m12;
-	res.mat1d[1] = a.m12*b.m11+a.m22*b.m12;
+	res.m0 = a.m0*b.m0+a.m2*b.m1;
+	res.m1 = a.m1*b.m0+a.m3*b.m1;
 
-	res.mat1d[2] = a.m11*b.m21+a.m21*b.m22;
-	res.mat1d[3] = a.m12*b.m21+a.m22*b.m22;
+	res.m2 = a.m0*b.m2+a.m2*b.m3;
+	res.m3 = a.m1*b.m2+a.m3*b.m3;
 
 	return res;
 }
 mat2 mat2_addScal(mat2 a, float scalar){
-	a.mat1d[0] += scalar;
-	a.mat1d[0] += scalar;
-	a.mat1d[0] += scalar;
-	a.mat1d[0] += scalar;
+	a.m0 += scalar;
+	a.m1 += scalar;
+	a.m2 += scalar;
+	a.m3 += scalar;
 	return a;
 }
 mat2 mat2_subScal(mat2 a, float scalar){
-	a.mat1d[0] -= scalar;
-	a.mat1d[0] -= scalar;
-	a.mat1d[0] -= scalar;
-	a.mat1d[0] -= scalar;
+	a.m0 -= scalar;
+	a.m1 -= scalar;
+	a.m2 -= scalar;
+	a.m3 -= scalar;
 	return a;
 }
 mat2 mat2_mulScal(mat2 a, float scalar){
-	a.mat1d[0] *= scalar;
-	a.mat1d[0] *= scalar;
-	a.mat1d[0] *= scalar;
-	a.mat1d[0] *= scalar;
+	a.m0 *= scalar;
+	a.m1 *= scalar;
+	a.m2 *= scalar;
+	a.m3 *= scalar;
 	return a;
 }
 mat2 mat2_divScal(mat2 a, float scalar){
-	a.mat1d[0] /= scalar;
-	a.mat1d[0] /= scalar;
-	a.mat1d[0] /= scalar;
-	a.mat1d[0] /= scalar;
+	a.m0 /= scalar;
+	a.m1 /= scalar;
+	a.m2 /= scalar;
+	a.m3 /= scalar;
 	return a;
 }
 mat2 mat2_identity(void){
@@ -73,15 +73,15 @@ mat2 mat2_scale(float x){
 	return res;
 }
 mat2 mat2_transpose(mat2 a){
-	mat2 res = {a.m11, a.m21, a.m12, a.m22};
+	mat2 res = {a.m0, a.m2, a.m1, a.m3};
 	return res;
 }
 mat2 mat2_swapRow(mat2 a){
-	mat2 res = {a.m12, a.m11, a.m22, a.m21};
+	mat2 res = {a.m1, a.m0, a.m3, a.m2};
 	return res;
 }
 mat2 mat2_swapCol(mat2 a){
-	mat2 res = {a.m21, a.m22, a.m11, a.m12};
+	mat2 res = {a.m2, a.m3, a.m0, a.m1};
 	return res;
 }
 

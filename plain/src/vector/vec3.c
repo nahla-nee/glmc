@@ -119,9 +119,9 @@ vec3 vec3_round(vec3 a){
 vec3 vec3_mulMat(vec3 a, mat3 b){
 	vec3 res;
 
-	res.vec[0] = a.x*b.m11+a.y*b.m21+a.z*b.m31;
-	res.vec[1] = a.x*b.m12+a.y*b.m22+a.z*b.m32;
-	res.vec[2] = a.x*b.m13+a.y*b.m23+a.z*b.m33;
+	res.vec[0] = a.x*b.m0+a.y*b.m3+a.z*b.m6;
+	res.vec[1] = a.x*b.m1+a.y*b.m4+a.z*b.m7;
+	res.vec[2] = a.x*b.m2+a.y*b.m5+a.z*b.m8;
 
 	return res;
 }

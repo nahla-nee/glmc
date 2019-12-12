@@ -129,10 +129,10 @@ vec4 vec4_round(vec4 a){
 vec4 vec4_mulMat(vec4 a, mat4 b){
 	vec4 res;
 
-	res.vec[0] = a.x*b.m11+a.y*b.m21+a.z*b.m31+a.w*b.m41;
-	res.vec[1] = a.x*b.m12+a.y*b.m22+a.z*b.m32+a.w*b.m42;
-	res.vec[2] = a.x*b.m13+a.y*b.m23+a.z*b.m33+a.w*b.m43;
-	res.vec[3] = a.x*b.m14+a.y*b.m24+a.z*b.m34+a.w*b.m44;
+	res.vec[0] = a.x*b.m0+a.y*b.m4+a.z*b.m8+a.w*b.m12;
+	res.vec[1] = a.x*b.m1+a.y*b.m5+a.z*b.m9+a.w*b.m13;
+	res.vec[2] = a.x*b.m2+a.y*b.m6+a.z*b.m10+a.w*b.m14;
+	res.vec[3] = a.x*b.m3+a.y*b.m7+a.z*b.m11+a.w*b.m15;
 
 	return res;
 }

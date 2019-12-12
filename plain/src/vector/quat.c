@@ -140,8 +140,8 @@ quat quat_mul(quat a, quat b){
 
 	//cross multiply a and b and add to res gives the final vector of res
 	quat cross = {0.0f, a.y*b.z-a.z*b.y,
-		a.z*b.x-a.x*b.z,
-		a.x*b.y-a.y*b.x};
+				a.z*b.x-a.x*b.z,
+				a.x*b.y-a.y*b.x};
 	res.x+=cross.x;
 	res.y+=cross.y;
 	res.z+=cross.z;
@@ -158,8 +158,8 @@ quat quat_mulPure(quat a, quat b){
 
 	//vector
 	quat cross = {0.0f, a.y*b.z-a.z*b.y,
-		a.z*b.x-a.x*b.z,
-		a.x*b.y-a.y*b.x};
+				a.z*b.x-a.x*b.z,
+				a.x*b.y-a.y*b.x};
 	a.x+=cross.x;
 	a.y+=cross.y;
 	a.z+=cross.z;
@@ -192,8 +192,8 @@ quat quat_div(quat a, quat b){
 
 	//cross multiply a and b and add to res gives the final vector of res
 	quat cross = {0.0f, a.y*b.z-a.z*b.y,
-		a.z*b.x-a.x*b.z,
-		a.x*b.y-a.y*b.x};
+				a.z*b.x-a.x*b.z,
+				a.x*b.y-a.y*b.x};
 	res.x+=cross.x;
 	res.y+=cross.y;
 	res.z+=cross.z;
@@ -210,25 +210,25 @@ mat4 quat_toMat(quat a){
 	float z = ((quat)a).z;
 	float w = ((quat)a).w;
 
-	res.mat1d[0] = 1.f - 2.f*a.y*a.y - 2.f*a.z*a.z;
-	res.mat1d[1] = 2.f*a.x*a.y - 2.f*a.z*a.w;
-	res.mat1d[2] = 2.f*a.x*a.z + 2.f*a.y*a.w;
-	res.mat1d[3] = 0.f;
+	res.m0 = 1.f - 2.f*a.y*a.y - 2.f*a.z*a.z;
+	res.m1 = 2.f*a.x*a.y - 2.f*a.z*a.w;
+	res.m2 = 2.f*a.x*a.z + 2.f*a.y*a.w;
+	res.m3 = 0.f;
 
-	res.mat1d[4] = 2.f*a.x*a.y + 2.f*a.z*a.w;
-	res.mat1d[5] = 1.f - 2.f*a.x*a.x - 2.f*a.z*a.z;
-	res.mat1d[6] = 2.f*a.y*a.z - 2.f*a.x*a.w;
-	res.mat1d[7] = 0.f;
+	res.m4 = 2.f*a.x*a.y + 2.f*a.z*a.w;
+	res.m5 = 1.f - 2.f*a.x*a.x - 2.f*a.z*a.z;
+	res.m6 = 2.f*a.y*a.z - 2.f*a.x*a.w;
+	res.m7 = 0.f;
 
-	res.mat1d[8] = 2.f*a.x*a.z - 2.f*a.y*a.w;
-	res.mat1d[9] = 2.f*a.y*a.z + 2.f*a.x*a.w;
-	res.mat1d[10] = 1.f - 2.f*a.x*a.x - 2.f*a.y*a.y;
-	res.mat1d[11] = 0.f;
+	res.m8 = 2.f*a.x*a.z - 2.f*a.y*a.w;
+	res.m9 = 2.f*a.y*a.z + 2.f*a.x*a.w;
+	res.m10 = 1.f - 2.f*a.x*a.x - 2.f*a.y*a.y;
+	res.m11 = 0.f;
 
-	res.mat1d[12] = 0.f;
-	res.mat1d[13] = 0.f;
-	res.mat1d[14] = 0.f;
-	res.mat1d[15] = 1.f;
+	res.m12 = 0.f;
+	res.m13 = 0.f;
+	res.m14 = 0.f;
+	res.m15 = 1.f;
 
 	return res;
 }

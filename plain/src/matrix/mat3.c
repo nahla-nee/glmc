@@ -9,92 +9,92 @@ mat3 mat3_set1(float x){
 	return res;
 }
 mat3 mat3_add(mat3 a, mat3 b){
-	a.mat1d[0] = a.mat1d[0]+b.mat1d[0];
-	a.mat1d[1] = a.mat1d[1]+b.mat1d[1];
-	a.mat1d[2] = a.mat1d[2]+b.mat1d[2];
-	a.mat1d[3] = a.mat1d[3]+b.mat1d[3];
-	a.mat1d[4] = a.mat1d[4]+b.mat1d[4];
-	a.mat1d[5] = a.mat1d[5]+b.mat1d[5];
-	a.mat1d[6] = a.mat1d[6]+b.mat1d[6];
-	a.mat1d[7] = a.mat1d[7]+b.mat1d[7];
-	a.mat1d[8] = a.mat1d[8]+b.mat1d[8];
+	a.m0 = a.m0+b.m0;
+	a.m1 = a.m1+b.m1;
+	a.m2 = a.m2+b.m2;
+	a.m3 = a.m3+b.m3;
+	a.m4 = a.m4+b.m4;
+	a.m5 = a.m5+b.m5;
+	a.m6 = a.m6+b.m6;
+	a.m7 = a.m7+b.m7;
+	a.m8 = a.m8+b.m8;
 	return a;
 }
 mat3 mat3_sub(mat3 a, mat3 b){
-	a.mat1d[0] = a.mat1d[0]-b.mat1d[0];
-	a.mat1d[1] = a.mat1d[1]-b.mat1d[1];
-	a.mat1d[2] = a.mat1d[2]-b.mat1d[2];
-	a.mat1d[3] = a.mat1d[3]-b.mat1d[3];
-	a.mat1d[4] = a.mat1d[4]-b.mat1d[4];
-	a.mat1d[5] = a.mat1d[5]-b.mat1d[5];
-	a.mat1d[6] = a.mat1d[6]-b.mat1d[6];
-	a.mat1d[7] = a.mat1d[7]-b.mat1d[7];
-	a.mat1d[8] = a.mat1d[8]-b.mat1d[8];
+	a.m0 = a.m0-b.m0;
+	a.m1 = a.m1-b.m1;
+	a.m2 = a.m2-b.m2;
+	a.m3 = a.m3-b.m3;
+	a.m4 = a.m4-b.m4;
+	a.m5 = a.m5-b.m5;
+	a.m6 = a.m6-b.m6;
+	a.m7 = a.m7-b.m7;
+	a.m8 = a.m8-b.m8;
 	return a;
 }
 mat3 mat3_mul(mat3 a, mat3 b){
 	mat3 res;
 
-	res.mat1d[0] = a.m11*b.m11+a.m21*b.m12+a.m31*b.m13;
-	res.mat1d[1] = a.m12*b.m11+a.m22*b.m12+a.m32*b.m13;
-	res.mat1d[2] = a.m13*b.m11+a.m23*b.m12+a.m33*b.m13;
+	res.m0 = a.m0*b.m0+a.m3*b.m1+a.m6*b.m2;
+	res.m1 = a.m1*b.m0+a.m4*b.m1+a.m7*b.m2;
+	res.m2 = a.m2*b.m0+a.m5*b.m1+a.m8*b.m2;
 
-	res.mat1d[3] = a.m11*b.m21+a.m21*b.m22+a.m31*b.m23;
-	res.mat1d[4] = a.m12*b.m21+a.m22*b.m22+a.m32*b.m23;
-	res.mat1d[5] = a.m13*b.m21+a.m23*b.m22+a.m33*b.m23;
+	res.m3 = a.m0*b.m3+a.m3*b.m4+a.m6*b.m5;
+	res.m4 = a.m1*b.m3+a.m4*b.m4+a.m7*b.m5;
+	res.m5 = a.m2*b.m3+a.m5*b.m4+a.m8*b.m5;
 
-	res.mat1d[6] = a.m11*b.m31+a.m21*b.m32+a.m31*b.m33;
-	res.mat1d[7] = a.m12*b.m31+a.m22*b.m32+a.m32*b.m33;
-	res.mat1d[8] = a.m13*b.m31+a.m23*b.m32+a.m33*b.m33;
+	res.m6 = a.m0*b.m6+a.m3*b.m7+a.m6*b.m8;
+	res.m7 = a.m1*b.m6+a.m4*b.m7+a.m7*b.m8;
+	res.m8 = a.m2*b.m6+a.m5*b.m7+a.m8*b.m8;
 
 	return res;
 }
 mat3 mat3_addScal(mat3 a, float scalar){
-	a.mat1d[0] = a.mat1d[0]+scalar;
-	a.mat1d[1] = a.mat1d[1]+scalar;
-	a.mat1d[2] = a.mat1d[2]+scalar;
-	a.mat1d[3] = a.mat1d[3]+scalar;
-	a.mat1d[4] = a.mat1d[4]+scalar;
-	a.mat1d[5] = a.mat1d[5]+scalar;
-	a.mat1d[6] = a.mat1d[6]+scalar;
-	a.mat1d[7] = a.mat1d[7]+scalar;
-	a.mat1d[8] = a.mat1d[8]+scalar;
+	a.m0 = a.m0+scalar;
+	a.m1 = a.m1+scalar;
+	a.m2 = a.m2+scalar;
+	a.m3 = a.m3+scalar;
+	a.m4 = a.m4+scalar;
+	a.m5 = a.m5+scalar;
+	a.m6 = a.m6+scalar;
+	a.m7 = a.m7+scalar;
+	a.m8 = a.m8+scalar;
 	return a;
 }
 mat3 mat3_subScal(mat3 a, float scalar){
-	a.mat1d[0] = a.mat1d[0]-scalar;
-	a.mat1d[1] = a.mat1d[1]-scalar;
-	a.mat1d[2] = a.mat1d[2]-scalar;
-	a.mat1d[3] = a.mat1d[3]-scalar;
-	a.mat1d[4] = a.mat1d[4]-scalar;
-	a.mat1d[5] = a.mat1d[5]-scalar;
-	a.mat1d[6] = a.mat1d[6]-scalar;
-	a.mat1d[7] = a.mat1d[7]-scalar;
-	a.mat1d[8] = a.mat1d[8]-scalar;
+	a.m0 = a.m0-scalar;
+	a.m1 = a.m1-scalar;
+	a.m2 = a.m2-scalar;
+	a.m3 = a.m3-scalar;
+	a.m4 = a.m4-scalar;
+	a.m5 = a.m5-scalar;
+	a.m6 = a.m6-scalar;
+	a.m7 = a.m7-scalar;
+	a.m8 = a.m8-scalar;
 	return a;
 }
 mat3 mat3_mulScal(mat3 a, float scalar){
-	a.mat1d[0] = a.mat1d[0]*scalar;
-	a.mat1d[1] = a.mat1d[1]*scalar;
-	a.mat1d[2] = a.mat1d[2]*scalar;
-	a.mat1d[3] = a.mat1d[3]*scalar;
-	a.mat1d[4] = a.mat1d[4]*scalar;
-	a.mat1d[5] = a.mat1d[5]*scalar;
-	a.mat1d[6] = a.mat1d[6]*scalar;
-	a.mat1d[7] = a.mat1d[7]*scalar;
-	a.mat1d[8] = a.mat1d[8]*scalar;
+	a.m0 = a.m0*scalar;
+	a.m1 = a.m1*scalar;
+	a.m2 = a.m2*scalar;
+	a.m3 = a.m3*scalar;
+	a.m4 = a.m4*scalar;
+	a.m5 = a.m5*scalar;
+	a.m6 = a.m6*scalar;
+	a.m7 = a.m7*scalar;
+	a.m8 = a.m8*scalar;
 	return a;
 }
 mat3 mat3_divScal(mat3 a, float scalar){
-	a.mat1d[0] = a.mat1d[0]/scalar;
-	a.mat1d[1] = a.mat1d[1]/scalar;
-	a.mat1d[2] = a.mat1d[2]/scalar;
-	a.mat1d[3] = a.mat1d[3]/scalar;
-	a.mat1d[4] = a.mat1d[4]/scalar;
-	a.mat1d[5] = a.mat1d[5]/scalar;
-	a.mat1d[6] = a.mat1d[6]/scalar;
-	a.mat1d[7] = a.mat1d[7]/scalar;
-	a.mat1d[8] = a.mat1d[8]/scalar;
+	a.m0 = a.m0/scalar;
+	a.m1 = a.m1/scalar;
+	a.m2 = a.m2/scalar;
+	a.m3 = a.m3/scalar;
+	a.m4 = a.m4/scalar;
+	a.m5 = a.m5/scalar;
+	a.m6 = a.m6/scalar;
+	a.m7 = a.m7/scalar;
+	a.m8 = a.m8/scalar;
 	return a;
 }
 mat3 mat3_identity(void){
@@ -116,9 +116,9 @@ mat3 mat3_scale(float x, float y){
 	return res;
 }
 mat3 mat3_transpose(mat3 a){
-	mat3 res = {a.m11, a.m21, a.m31,
-		a.m12, a.m22, a.m32,
-		a.m13, a.m23, a.m33};
+	mat3 res = {a.m0, a.m3, a.m6,
+		a.m1, a.m4, a.m7,
+		a.m2, a.m5, a.m8};
 	return res;
 }
 mat3 mat3_swapRow(mat3 a, int R1, int R2){

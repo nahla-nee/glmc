@@ -99,8 +99,8 @@ vec2 vec2_round(vec2 a){
 vec2 vec2_mulMat(vec2 a, mat2 b){
 	vec2 res;
 
-	res.vec[0] = a.x*b.m11+a.y*b.m21;
-	res.vec[1] = a.x*b.m12+a.y*b.m22;
+	res.vec[0] = a.x*b.m0+a.y*b.m2;
+	res.vec[1] = a.x*b.m1+a.y*b.m3;
 
 	return res;
 }
