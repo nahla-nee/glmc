@@ -1,8 +1,8 @@
 # Mat3
 
-A 3x3 column major matrix
+A 3x3 column major matrix.
 
-## Internals
+## Definition
 
 ```c
 //simd
@@ -15,6 +15,8 @@ typedef union mat3{
 	};
 } mat3;
 ```
+
+## Functions
 
 >`mat3 mat3_set(float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8);`
 

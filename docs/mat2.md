@@ -1,8 +1,8 @@
 # Mat2
 
-A 2x2 column major matrix
+A 2x2 column major matrix.
 
-## Internals
+## Definition
 
 ```c
 //simd
@@ -15,6 +15,8 @@ typedef union mat2{
 	};
 } mat2;
 ```
+
+## Functions
 
 >`mat2 mat2_set(float m0, float m1, float m2, float m3)`
 

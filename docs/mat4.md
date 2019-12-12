@@ -1,8 +1,8 @@
 # Mat4
 
-A 4x4 column major matrix
+A 4x4 column major matrix.
 
-## Internals
+## Definition
 
 ```c
 //simd
@@ -15,6 +15,8 @@ typedef union mat4{
 	};
 } mat4;
 ```
+
+## Functions
 
 >`mat4 mat4_set(float m0, float m1, float m2, float m3, float m4, float m5, float m6, float m7, float m8, float m9, float m10, float m11, float m12, float m13, float m14, float m15)`
 
