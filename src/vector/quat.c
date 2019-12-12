@@ -4,20 +4,7 @@ __m128 quat_set(float w, float x, float y, float z){
 	return _mm_set_ps(w, z, y, x);
 }
 
-bool quat_equal(__m128 a, __m128 b){
-	a = quat_sub(a, b);
-	a = quat_abs(a);
-
-	quat tmp = (quat)quat_set1(FLT_EPSILON);
-	tmp.vec = _mm_cmpgt_ps(a, tmp.vec);
-
-	if((int)tmp.x || (int)tmp.y || (int)tmp.z || (int)tmp.w){
-		return false;
-	}
-	return true;
-}
-
-bool quat_equal_eps(__m128 a, __m128 b, float epsilon){
+bool quat_equalEps(__m128 a, __m128 b, float epsilon){
 	a = quat_sub(a, b);
 	a = quat_abs(a);
 
@@ -28,6 +15,10 @@ bool quat_equal_eps(__m128 a, __m128 b, float epsilon){
 		return false;
 	}
 	return true;
+}
+
+bool quat_equal(__m128 a, __m128 b){
+	return quat_equalEps(a, b, FLT_EPSILON);
 }
 
 float quat_len(__m128 a){

@@ -4,20 +4,7 @@ __m128 vec3_set(float x, float y, float z){
 	return _mm_set_ps(0.f, z, y, x);
 }
 
-bool vec3_equal(__m128 a, __m128 b){
-	a = vec3_add(a, b);
-	a = vec3_abs(a);
-
-	vec3 tmp = (vec3)vec3_set1(FLT_EPSILON);
-	tmp.vec = _mm_cmpgt_ps(a, tmp.vec);
-
-	if((int)tmp.x || (int)tmp.y || (int)tmp.z){
-		return false;
-	}
-	return true;
-}
-
-bool vec3_equal_eps(__m128 a, __m128 b, float epsilon){
+bool vec3_equalEps(__m128 a, __m128 b, float epsilon){
 	a = vec3_add(a, b);
 	a = vec3_abs(a);
 
@@ -28,6 +15,10 @@ bool vec3_equal_eps(__m128 a, __m128 b, float epsilon){
 		return false;
 	}
 	return true;
+}
+
+bool vec3_equal(__m128 a, __m128 b){
+	return vec3_equalEps(a, b, FLT_EPSILON);
 }
 
 float vec3_len(__m128 a){

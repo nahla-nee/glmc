@@ -27,8 +27,8 @@ extern "C"{
 #endif
 
 __m128 quat_set(float x, float y, float z, float w);
+bool quat_equalEps(__m128 a, __m128 b, float epsilon);
 bool quat_equal(__m128 a, __m128 b);
-bool quat_equal_eps(__m128 a, __m128 b, float epsilon);
 float quat_len(__m128 a);
 __m128 quat_norm(__m128 a);
 __m128 quat_conj(__m128 a);

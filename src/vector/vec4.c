@@ -4,20 +4,7 @@ __m128 vec4_set(float x, float y, float z, float w){
 	return _mm_set_ps(w, z, y, x);
 }
 
-bool vec4_equal(__m128 a, __m128 b){
-	a = vec4_sub(a, b);
-	a = vec4_abs(a);
-
-	vec4 tmp = (vec4)vec4_set1(FLT_EPSILON);
-	tmp.vec = _mm_cmpgt_ps(a, tmp.vec);
-
-	if((int)tmp.x || (int)tmp.y || (int)tmp.z || (int)tmp.w){
-		return false;
-	}
-	return true;
-}
-
-bool vec4_equal_eps(__m128 a, __m128 b, float epsilon){
+bool vec4_equalEps(__m128 a, __m128 b, float epsilon){
 	a = vec4_sub(a, b);
 	a = vec4_abs(a);
 
@@ -28,6 +15,10 @@ bool vec4_equal_eps(__m128 a, __m128 b, float epsilon){
 		return false;
 	}
 	return true;
+}
+
+bool vec4_equal(__m128 a, __m128 b){
+	return vec4_equalEps(a, b, FLT_EPSILON);
 }
 
 float vec4_len(__m128 a){

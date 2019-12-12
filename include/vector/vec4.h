@@ -29,8 +29,8 @@ extern "C"{
 #endif
 
 __m128 vec4_set(float x, float y, float z, float w);
+bool vec4_equalEps(__m128 a, __m128 b, float epsilon);
 bool vec4_equal(__m128 a, __m128 b);
-bool vec4_equal_eps(__m128 a, __m128 b, float epsilon);
 float vec4_len(__m128 a);
 __m128 vec4_norm(__m128 a);
 float vec4_dot(__m128 a, __m128 b);
